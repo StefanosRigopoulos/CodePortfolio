@@ -1,0 +1,38 @@
+.navbar-brand {
+    font-weight: bold;
+    color: #64dbab;
+}
+
+.navbar-brand:hover {
+    font-weight: bold;
+    color: #64dbab;
+}
+
+.dropdown-toggle, .dropdown-item {
+    cursor: pointer;
+}
+
+.btnSignIn {
+    background-color: transparent;
+    border: solid 2px #1fcd8ddf;
+    color: rgba(255, 255, 255, 0.866);
+    width: 170px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+.btnSignIn:hover {
+    background-color: #1fcd8ddf;
+    color: white;
+}
+
+.form-control {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.nav-item {
+    margin-left: 5px;
+    margin-right: 5px;
+}
