@@ -4,12 +4,11 @@ import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../_services/account.service';
 
 @Component({
-  selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-
-export class NavComponent implements OnInit {
+export class LoginComponent implements OnInit {
   model: any = {};
 
   constructor(public accountService: AccountService, private router: Router, private toastr: ToastrService) { }
@@ -23,9 +22,5 @@ export class NavComponent implements OnInit {
       error: error => this.toastr.error(error.error)
     })
   }
-
-  logout() {
-    this.accountService.logout();
-    this.router.navigateByUrl('/');
-  }
 }
+

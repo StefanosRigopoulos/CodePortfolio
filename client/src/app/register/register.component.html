@@ -1,3 +1,4 @@
+<!--
 <form #registerForm="ngForm" (ngSummit)="register()" autocomplete="off">
     <h2 class="text-center text-primary">Sign Up</h2>
     <hr>
@@ -20,3 +21,54 @@
         <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
     </div>
 </form>
+-->
+<div class="row d-flex justify-content-center">
+    <div class="col-11">
+        <div class="card" style="border-radius: 1rem;">
+            <div class="row g-0">
+                <div class="col-md-5 col-lg-6 d-none d-md-block">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;">
+                </div>
+                <div class="col-md-5 col-lg-6 d-flex">
+                    <div class="card-body p-lg-5 text-black">
+                        <form #registerForm="ngForm" (ngSummit)="register()" autocomplete="off">
+                            <div class="d-flex align-items-center mb-3 pb-1">
+                                <span class="h1 fw-bold mb-0">Registration Form</span>
+                            </div>
+                            <h5 class="fw-normal mb-2 pb-3" style="letter-spacing: 1px;">Start your journey today!</h5>
+                            <div class="form-outline mb-3">
+                                <input name="username"
+                                    [(ngModel)]="model.username"
+                                    class="form-control form-control-lg"
+                                    type="text"
+                                    placeholder="Username">
+                            <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 64px;"></div><div class="form-notch-trailing"></div></div></div>
+                            <div class="form-outline mb-3">
+                                <input name="email"
+                                    [(ngModel)]="model.email"
+                                    class="form-control form-control-lg"
+                                    type="email"
+                                    placeholder="Email">
+                            <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 64px;"></div><div class="form-notch-trailing"></div></div></div>
+                            <div class="form-outline mb-3">
+                                <input name="password"
+                                    [(ngModel)]="model.password"
+                                    class="form-control form-control-lg"
+                                    type="password"
+                                    placeholder="Password">
+                            <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 64px;"></div><div class="form-notch-trailing"></div></div></div>
+                            <div class="form-check justify-content-center align-items-center mb-4">
+                                <input class="form-check-input me-2" type="checkbox" id="checkForRegister">
+                                <label class="form-check-label" for="checkForRegister"> I agree to the <a class="text-body"><u>Terms of service</u></a> </label>
+                            </div>
+                            <div class="mb-3">
+                                <button class="btn btn-dark btn-lg btn-block" type="submit" (click)="register()">Sign Up</button>
+                            </div>
+                        </form>
+                        <p class="text-center text-muted mt-2 mb-0">Have already an account? <a class="fw-bold text-body" routerLink="/login" routerLinkActive="active"><u>Sign In</u></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,13 +7,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
 import { FormsModule } from '@angular/forms';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
-import { ExploreComponent } from './members/explore/explore.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
-import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
+import { MemberListComponent } from './members/member-list/member-list.component';
+import { ExploreComponent } from './explore/explore.component';
+import { SharedModule } from './_modules/shared.module';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +22,11 @@ import { MessagesComponent } from './messages/messages.component';
     NavComponent,
     HomeComponent,
     RegisterComponent,
-    ExploreComponent,
+    MemberListComponent,
     MemberDetailComponent,
-    ListsComponent,
-    MessagesComponent
+    MessagesComponent,
+    ExploreComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ import { MessagesComponent } from './messages/messages.component';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    BsDropdownModule.forRoot()
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

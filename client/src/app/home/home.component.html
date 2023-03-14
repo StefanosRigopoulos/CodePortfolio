@@ -1,12 +1,12 @@
 <div class="container mt-5">
-    <div *ngIf="!registerMode" style="text-align: center;">
+    <div style="text-align: center;">
         <h1>Explore the coding world</h1>
         <p class="lead">Share your work and get help from other developers... all you need to do is sign up!</p>
         <div class="text-center">
-            <button (click)="registerToggle()" class="btn btn-primary btn-lg">Sign Up</button>
+            <button class="btn btn-primary btn-lg" routerLink="/register" routerLinkActive="active">Sign Up</button>
         </div>
     </div>
-
+    <!--
     <div *ngIf="registerMode" class="container">
         <div class="row justify-content-center">
             <div class="col-4">
@@ -14,4 +14,5 @@
             </div>
         </div>
     </div>
+    -->
 </div>
