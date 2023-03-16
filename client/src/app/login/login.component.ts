@@ -18,9 +18,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.accountService.login(this.model).subscribe({
-      next: response => this.router.navigateByUrl('/explore'),
-      error: error => this.toastr.error(error.error)
+      next: response => this.router.navigateByUrl('/explore')
     })
   }
 }
-
