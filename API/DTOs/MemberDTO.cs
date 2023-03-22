@@ -1,24 +1,22 @@
-using API.Extensions;
+using API.Entities;
 
-namespace API.Entities
+namespace API.DTOs
 {
-    public class AppUser
+    public class MemberDTO
     {
-        //Register Form
         public int Id { get; set; }
         public string UserName { get; set; }
         public string NickName { get; set; }
+        public string MainPhotoURL { get; set; }
         public string Email { get; set; }
-        public byte[] PasswordHash { get; set; }
-        public byte[] PasswordSalt { get; set; }
-        public DateOnly DateOfBirth { get; set; }
-        public DateTime Created { get; set; } = DateTime.UtcNow;
-        public DateTime LastActive { get; set; } = DateTime.UtcNow;
+        public int age { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime LastActive { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Gender { get; set; }
         public string Country { get; set; }
-        public List<Photo> Photos { get; set; } = new ();
+        public List<PhotoDTO> Photos { get; set; } = new ();
 
         // More Info
         public string Bio { get; set; }

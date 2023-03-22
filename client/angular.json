@@ -25,6 +25,7 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "./node_modules/ngx-spinner/animations/line-scale-party.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/bootswatch/dist/quartz/bootstrap.css",
               "./node_modules/font-awesome/css/font-awesome.min.css",
@@ -111,5 +112,7 @@
       }
     }
   },
-  "defaultProject": "client"
+  "cli": {
+    "analytics": false
+  }
 }

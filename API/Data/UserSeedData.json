@@ -1,0 +1,62 @@
+[
+    {
+        "UserName": "Kamora",
+        "NickName": "Kamora",
+        "Email": "stefarigop@gmail.com",
+        "DateOfBirth": "2000-01-31",
+        "Created": "2022-03-18",
+        "LastActive": "2023-03-18",
+        "FirstName": "Stefanos",
+        "LastName": "Rigopoulos",
+        "Gender": "male",
+        "Country": "Greece",
+
+        "Bio": "Best dev ever existed!",
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/men/91.jpg",
+                "IsMain": true
+            }
+        ]
+    },
+    {
+        "UserName": "ToxicNik",
+        "NickName": "ToxicNik",
+        "Email": "epizwnikos@gmail.com",
+        "DateOfBirth": "2000-01-02",
+        "Created": "2022-03-17",
+        "LastActive": "2023-03-17",
+        "FirstName": "Nikos",
+        "LastName": "Gyftonikolos",
+        "Gender": "male",
+        "Country": "Greece",
+
+        "Bio": "Worst dev ever existed!",
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/men/92.jpg",
+                "IsMain": true
+            }
+        ]
+    },
+    {
+        "UserName": "DespL",
+        "NickName": "DespL",
+        "Email": "despoinaligkri@gmail.com",
+        "DateOfBirth": "2003-10-05",
+        "Created": "2022-03-16",
+        "LastActive": "2023-03-16",
+        "FirstName": "Despoina",
+        "LastName": "Ligkri",
+        "Gender": "female",
+        "Country": "Greece",
+
+        "Bio": "Whatever!",
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/women/41.jpg",
+                "IsMain": true
+            }
+        ]
+    }
+]
