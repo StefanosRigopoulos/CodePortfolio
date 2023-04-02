@@ -1,0 +1,14 @@
+<div class="card mb-4" *ngIf="member">
+    <div class="card-img-wrapper rounded" routerLink="/members/{{member.userName}}">
+        <div class="ratio ratio-1x1">
+            <img src="{{member.profilePhotoURL}}" alt="{{member.nickName}}" class="card-img-top">
+        </div>
+    </div>
+    <div class="card-body p-1">
+        <h6 class="card-title text-center mb-1">
+            <i class="fa fa-user me-2"></i>
+            {{member.nickName}}
+        </h6>
+        <p class="card-text text-muted text-center">{{member.codeLanguage}}</p>
+    </div>
+</div>

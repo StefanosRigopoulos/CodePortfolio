@@ -1,10 +1,7 @@
-using API.Extensions;
-
 namespace API.Entities
 {
     public class AppUser
     {
-        //Register Form
         public int Id { get; set; }
         public string UserName { get; set; }
         public string NickName { get; set; }
@@ -18,13 +15,13 @@ namespace API.Entities
         public string LastName { get; set; }
         public string Gender { get; set; }
         public string Country { get; set; }
-        public List<Photo> Photos { get; set; } = new ();
-
-        // More Info
+        public string CodeLanguage { get; set; }
+        public string ProfilePhotoURL { get; set; }
+        public List<Project> Projects { get; set; } = new ();
         public string Bio { get; set; }
-        public string SocialURL_1 { get; set; }
-        public string SocialURL_2 { get; set; }
-        public string SocialURL_3 { get; set; }
-        public string SocialURL_4 { get; set; }
+        public string FacebookURL { get; set; }
+        public string TwitterURL { get; set; }
+        public string GitHubURL { get; set; }
+        public string LinkedInURL { get; set; }
     }
 }

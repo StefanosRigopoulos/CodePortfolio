@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@kolkov/ngx-gallery": "^2.0.1"
+  }
+}

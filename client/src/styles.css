@@ -1,4 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.nav-tabs > li.open, .member-tabset > .nav-tabs > li:hover {
+    background-color: #e83283;
+    border-radius: 8px;
+}
+
+.member-tabset > .nav-tabs > li.open > a, .member-tabset > .nav-tabs > li:hover > a {
+    border: 0;
+    color: #ffffff;
+}
+
+.member-tabset > .nav-tabs > li.open .dropdown-menu, .member-tabset > .nav-tabs > li:hover .dropdown-menu {
+    margin-top: 0px;
+}
+
+.member-tabset > .nav-tabs > li.active {
+    border-bottom: 0;
+    position: relative;
+}
+
+.member-tabset > .nav-tabs > li.active > a {
+    border: 0 !important;
+    color: #333333;
+}
+
+.member-tabset > .nav-tabs {
+    margin-bottom: 10px;
+}
+
+.tab-content {
+    padding-top: 10px;
+}

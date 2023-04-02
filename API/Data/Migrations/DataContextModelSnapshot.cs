@@ -15,7 +15,7 @@ namespace API.Data.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "6.0.0");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
 
             modelBuilder.Entity("API.Entities.AppUser", b =>
                 {
@@ -23,18 +23,154 @@ namespace API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Bio")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CodeLanguage")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateOnly>("DateOfBirth")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FacebookURL")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("GitHubURL")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("LastActive")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LinkedInURL")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NickName")
+                        .HasColumnType("TEXT");
+
                     b.Property<byte[]>("PasswordHash")
                         .HasColumnType("BLOB");
 
                     b.Property<byte[]>("PasswordSalt")
                         .HasColumnType("BLOB");
 
+                    b.Property<string>("ProfilePhotoURL")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TwitterURL")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("UserName")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("API.Entities.Project", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Language")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MainPhotoURL")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProjectName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProjectTitle")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PublicId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("API.Entities.ProjectPhoto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("PublicId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("URL")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("ProjectPhotos");
+                });
+
+            modelBuilder.Entity("API.Entities.Project", b =>
+                {
+                    b.HasOne("API.Entities.AppUser", "AppUser")
+                        .WithMany("Projects")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("API.Entities.ProjectPhoto", b =>
+                {
+                    b.HasOne("API.Entities.Project", "Project")
+                        .WithMany("ProjectPhotos")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("API.Entities.AppUser", b =>
+                {
+                    b.Navigation("Projects");
+                });
+
+            modelBuilder.Entity("API.Entities.Project", b =>
+                {
+                    b.Navigation("ProjectPhotos");
                 });
 #pragma warning restore 612, 618
         }

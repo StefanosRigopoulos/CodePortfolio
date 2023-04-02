@@ -1,5 +1,3 @@
-using API.Entities;
-
 namespace API.DTOs
 {
     public class MemberDTO
@@ -7,7 +5,6 @@ namespace API.DTOs
         public int Id { get; set; }
         public string UserName { get; set; }
         public string NickName { get; set; }
-        public string MainPhotoURL { get; set; }
         public string Email { get; set; }
         public int age { get; set; }
         public DateTime Created { get; set; }
@@ -16,13 +13,13 @@ namespace API.DTOs
         public string LastName { get; set; }
         public string Gender { get; set; }
         public string Country { get; set; }
-        public List<PhotoDTO> Photos { get; set; } = new ();
-
-        // More Info
+        public string CodeLanguage { get; set; }
+        public string ProfilePhotoURL { get; set; }
+        public List<ProjectDTO> Projects { get; set; } = new ();
         public string Bio { get; set; }
-        public string SocialURL_1 { get; set; }
-        public string SocialURL_2 { get; set; }
-        public string SocialURL_3 { get; set; }
-        public string SocialURL_4 { get; set; }
+        public string FacebookURL { get; set; }
+        public string TwitterURL { get; set; }
+        public string GitHubURL { get; set; }
+        public string LinkedInURL { get; set; }
     }
 }

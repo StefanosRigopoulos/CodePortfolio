@@ -1,0 +1,45 @@
+.img-thumbnail {
+    margin-top: 30px;
+    margin-left: 30px;
+    width: 85%;
+    height: 85%;
+    background-color: #31a24c;
+    border: 1px #31a24c;
+}
+
+.card-img-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+.member-icons {
+    position: absolute;
+    bottom: -30%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+}
+
+.card-img-wrapper:hover .member-icons {
+    bottom: 0;
+    opacity: 1;
+}
+
+.animate {
+    transition: all 0.3s ease-in-out;
+}
+
+.ratio {
+    margin-bottom: -30px;
+}
+
+.message {
+    min-height: 150px;
+    max-height: 200px;
+}
+hr {
+    margin-top: -5px;
+    margin-bottom: 20px;
+}

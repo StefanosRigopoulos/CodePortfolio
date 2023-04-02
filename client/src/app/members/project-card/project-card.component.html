@@ -1,0 +1,11 @@
+<div class="card mb-4" *ngIf="project">
+    <div class="card-img-wrapper rounded" routerLink="/members/{{member.userName}}/{{project.projectName}}">
+        <div class="ratio ratio-1x1">
+            <img src="{{project.mainPhotoURL}}" alt="{{project.projectName}}" class="card-img-top">
+        </div>
+    </div>
+    <div class="card-body p-1">
+        <h6 class="card-title text-center mb-1">{{project.projectTitle}}</h6>
+        <p class="card-text text-muted text-center">{{project.language}}</p>
+    </div>
+</div>

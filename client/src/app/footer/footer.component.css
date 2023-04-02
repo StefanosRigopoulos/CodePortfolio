@@ -1,0 +1,44 @@
+:root {
+    --white: #fff;
+    --blue: #3051f1;
+    --purple: #c92bb7;
+    --red: #f73344;
+    --orange: #fa8e37;
+    --yellow: #fcdf8f;
+    --yellow_to: #fbd377;
+}
+
+.facebookIcon, .twitterIcon, .googleIcon, .instagramIcon, .linkedInIcon, .gitHubIcon {
+    color: #ffffff;
+}
+
+.facebookIcon:hover {
+    background-color: #4267B2;
+    border-color: #4267B2;
+}
+
+.twitterIcon:hover {
+    background-color: #1DA1F2;
+    border-color: #1DA1F2;
+}
+
+.googleIcon:hover {
+    background-color: #8c0b0b;
+    border-color: #8c0b0b;
+}
+
+.instagramIcon:hover {
+    background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+    border-color: #343a40;
+}
+
+.linkedInIcon:hover {
+    background-color: #0A66C2;
+    border-color: #0A66C2;
+}
+
+.gitHubIcon:hover {
+    color: #262626;
+    background-color: white;
+    border-color: white;
+}

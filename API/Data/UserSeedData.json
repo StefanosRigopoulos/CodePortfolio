@@ -10,14 +10,95 @@
         "LastName": "Rigopoulos",
         "Gender": "male",
         "Country": "Greece",
-
+        "CodeLanguage": "C#",
         "Bio": "Best dev ever existed!",
-        "Photos": [
+        "ProfilePhotoURL": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "Projects": [
             {
-                "Url": "https://randomuser.me/api/portraits/men/91.jpg",
-                "IsMain": true
+                "ProjectName": "website_application",
+                "ProjectTitle": "Website Application",
+                "Language": "C#",
+                "Description": "We created a template for an upcoming web application.",
+                "ProjectPhotos": [
+                    {
+                        "URL": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    },
+                    {
+                        "URL": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    },
+                    {
+                        "URL": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    },
+                    {
+                        "URL": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    }
+                ]
+            },
+            {
+                "ProjectName": "mobile_application",
+                "ProjectTitle": "Mobile Application",
+                "Language": "Java",
+                "Description": "We tried to create a mobile application focused on navigating the user to the best suited places for his amusement.",
+                "ProjectPhotos": [
+                    {
+                        "URL": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    },
+                    {
+                        "URL": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    },
+                    {
+                        "URL": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    },
+                    {
+                        "URL": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    }
+                ]
+            },
+            {
+                "ProjectName": "game_development",
+                "ProjectTitle": "Game Development",
+                "Language": "C++",
+                "Description": "We made the best game ever existed.",
+                "ProjectPhotos": [
+                    {
+                        "URL": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    },
+                    {
+                        "URL": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    },
+                    {
+                        "URL": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    },
+                    {
+                        "URL": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    }
+                ]
+            },
+            {
+                "ProjectName": "learning_connections",
+                "ProjectTitle": "Learning Connections",
+                "Language": "Scratch",
+                "Description": "I am trying to learn how to connect different modules and make them interact with each other.",
+                "ProjectPhotos": [
+                    {
+                        "URL": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    },
+                    {
+                        "URL": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    },
+                    {
+                        "URL": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    },
+                    {
+                        "URL": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    }
+                ]
             }
-        ]
+        ],
+        "FacebookURL": "https://www.facebook.com/stefanos.rigo/",
+        "TwitterURL": "https://twitter.com/CaptainKamora",
+        "GitHubURL": "https://github.com/StefanosRigopoulos",
+        "LinkedInURL": "https://www.linkedin.com/in/stefanos-rigopoulos-a0024a257/"
     },
     {
         "UserName": "ToxicNik",
@@ -30,12 +111,29 @@
         "LastName": "Gyftonikolos",
         "Gender": "male",
         "Country": "Greece",
-
+        "CodeLanguage": "Java",
         "Bio": "Worst dev ever existed!",
-        "Photos": [
+        "ProfilePhotoURL": "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fG1hbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+        "Projects": [
             {
-                "Url": "https://randomuser.me/api/portraits/men/92.jpg",
-                "IsMain": true
+                "ProjectName": "mobile_application",
+                "ProjectTitle": "Mobile Application",
+                "Language": "Java",
+                "Description": "We tried to create a mobile application focused on navigating the user to the best suited places for his amusement.",
+                "ProjectPhotos": [
+                    {
+                        "URL": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    },
+                    {
+                        "URL": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    },
+                    {
+                        "URL": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    },
+                    {
+                        "URL": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    }
+                ]
             }
         ]
     },
@@ -50,12 +148,29 @@
         "LastName": "Ligkri",
         "Gender": "female",
         "Country": "Greece",
-
+        "CodeLanguage": "Scratch",
         "Bio": "Whatever!",
-        "Photos": [
+        "ProfilePhotoURL": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fHdvbWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "Projects": [
             {
-                "Url": "https://randomuser.me/api/portraits/women/41.jpg",
-                "IsMain": true
+                "ProjectName": "learning_connections",
+                "ProjectTitle": "Learning Connections",
+                "Language": "Scratch",
+                "Description": "I am trying to learn how to connect different modules and make them interact with each other.",
+                "ProjectPhotos": [
+                    {
+                        "URL": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    },
+                    {
+                        "URL": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    },
+                    {
+                        "URL": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    },
+                    {
+                        "URL": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    }
+                ]
             }
         ]
     }

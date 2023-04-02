@@ -1,0 +1,155 @@
+<div class="row d-flex justify-content-center">
+    <div class="col-10">
+        <div class="card text-white" style="border-radius: 20px;">
+            <div class="card-header text-center pt-3">
+                <h2>Your Profile</h2>
+            </div>
+            <div class="card-body">
+                <!--nickname, email, password, first name-last name, country, code language, bio, social, profile photo,     Projects-->
+                <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()">
+                    <div class="row">       <!--Alias-->
+                        <div class="col-6 pb-2 text-center editName">
+                            <h5>Alias</h5>
+                        </div>
+                        <div class="col-6 pb-3" style="text-align: start;">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" [(ngModel)]="member.nickName" id="floatingAlias" name="nickName" placeholder="Alias">
+                                <label for="floatingAlias">Alias</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">       <!--Email-->
+                        <div class="col-6 pb-2 text-center editName">
+                            <h5>Email</h5>
+                        </div>
+                        <div class="col-6 pb-3" style="text-align: start;">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" [(ngModel)]="member.email" id="floatingEmail" name="email" placeholder="Email">
+                                <label for="floatingEmail">Email</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">       <!--Password-->
+                        <div class="col-6 pb-2 text-center editName">
+                            <h5>Password Reset</h5>
+                        </div>
+                        <div class="col-6 pb-3">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control" id="floatingCurrent" name="password" placeholder="Current">
+                                        <label for="floatingCurrent">Current</label>
+                                    </div>
+                                </div>
+                                <div class="col-6" style=>
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control" id="floatingNew" name="newPassword" placeholder="New">
+                                        <label for="floatingNew">New</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">       <!--Full Name-->
+                        <div class="col-6 pb-2 text-center editName">
+                            <h5>Full Name</h5>
+                        </div>
+                        <div class="col-6 pb-3">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" [(ngModel)]="member.firstName" id="floatingFirst" name="firstName" placeholder="First Name">
+                                        <label for="floatingFirst">First Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-6" style=>
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" [(ngModel)]="member.lastName" id="floatingLast" name="lastName" placeholder="Last Name">
+                                        <label for="floatingLast">Last Name</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">       <!--Country-->
+                        <div class="col-6 pb-2 text-center editName">
+                            <h5>Country</h5>
+                        </div>
+                        <div class="col-6 pb-3" style="text-align: start;">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" [(ngModel)]="member.country" id="floatingCountry" name="country" placeholder="Country">
+                                <label for="floatingCountry">Country</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">       <!--CodeLanguage-->
+                        <div class="col-6 pb-2 text-center editName">
+                            <h5>Preferred Coding Language</h5>
+                        </div>
+                        <div class="col-6 pb-3" style="text-align: start;">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" [(ngModel)]="member.codeLanguage" id="floatingCode" name="codeLanguage" placeholder="Code Language">
+                                <label for="floatingCode">Code Language</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">       <!--Bio-->
+                        <div class="col-6 pb-2 text-center editName">
+                            <h5>Description</h5>
+                        </div>
+                        <div class="col-6 pb-3" style="text-align: start;">
+                            <textarea type="text" class="form-control" [(ngModel)]="member.bio" style="max-height: 200px; min-height: 200px;" name="bio" placeholder="Description"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">       <!--Social-->
+                        <div class="col-6 pb-2 text-center editName">
+                            <h5 for="fullname">Social URLs</h5>
+                        </div>
+                        <div class="col-6 pb-3" style="text-align: start;">
+                            <div class="col-12 pb-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" [(ngModel)]="member.facebookURL" id="floatingFacebook" name="facebookURL" placeholder="Facebook">
+                                    <label for="floatingFacebook">Facebook</label>
+                                </div>
+                            </div>
+                            <div class="col-12 pb-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" [(ngModel)]="member.twitterURL" id="floatingTwitter" name="twitterURL" placeholder="Twitter">
+                                    <label for="floatingTwitter">Twitter</label>
+                                </div>
+                            </div>
+                            <div class="col-12 pb-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" [(ngModel)]="member.gitHubURL" id="floatingGitHub" name="gitHubURL" placeholder="GitHub">
+                                    <label for="floatingGitHub">GitHub</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" [(ngModel)]="member.linkedInURL" id="floatingLinkedIn" name="linkedInURL" placeholder="LinkedIn">
+                                    <label for="floatingLinkedIn">LinkedIn</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">       <!--Photo-->
+                        <div class="col-6 pb-2 text-center editName">
+                            <h5>Profile Photo</h5>
+                        </div>
+                        <div class="col-6 pb-3" style="text-align: start;">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" [(ngModel)]="member.profilePhotoURL" id="floatingProfile" name="profilePhotoURL" placeholder="Profile Photo">
+                                <label for="floatingProfile">Profile Photo</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center p-3">
+                <div>
+                    <button class="btn btn-success btn-lg px-5" [disabled]="!editForm.dirty" form="editForm" type="submit">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
