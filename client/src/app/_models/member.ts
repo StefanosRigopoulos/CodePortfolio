@@ -1,3 +1,4 @@
+import { Photo } from "./photo";
 import { Project } from "./project";
 
 export interface Member {
@@ -14,6 +15,7 @@ export interface Member {
     country: string;
     codeLanguage: string;
     profilePhotoURL: string;
+    photo: Photo;
     projects: Project[];
     bio: string;
     facebookURL: string;

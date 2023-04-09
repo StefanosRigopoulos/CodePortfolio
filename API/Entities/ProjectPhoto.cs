@@ -8,6 +8,7 @@ namespace API.Entities
         public int Id { get; set; }
         public string URL { get; set; }
         public string PublicId { get; set; }
+        public bool IsMain { get; set; }
 
         // Relation properties
         public int ProjectId { get; set; }

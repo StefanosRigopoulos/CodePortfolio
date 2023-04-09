@@ -7,33 +7,33 @@
             <div class="card-body">
                 <!--nickname, email, password, first name-last name, country, code language, bio, social, profile photo,     Projects-->
                 <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()">
-                    <div class="row">       <!--Alias-->
-                        <div class="col-6 pb-2 text-center editName">
+                    <div class="row editRow">       <!--Alias-->
+                        <div class="col-6 text-center editName">
                             <h5>Alias</h5>
                         </div>
-                        <div class="col-6 pb-3" style="text-align: start;">
+                        <div class="col-6" style="text-align: start;">
                             <div class="form-floating">
                                 <input type="text" class="form-control" [(ngModel)]="member.nickName" id="floatingAlias" name="nickName" placeholder="Alias">
                                 <label for="floatingAlias">Alias</label>
                             </div>
                         </div>
                     </div>
-                    <div class="row">       <!--Email-->
-                        <div class="col-6 pb-2 text-center editName">
+                    <div class="row editRow">       <!--Email-->
+                        <div class="col-6 text-center editName">
                             <h5>Email</h5>
                         </div>
-                        <div class="col-6 pb-3" style="text-align: start;">
+                        <div class="col-6" style="text-align: start;">
                             <div class="form-floating">
                                 <input type="email" class="form-control" [(ngModel)]="member.email" id="floatingEmail" name="email" placeholder="Email">
                                 <label for="floatingEmail">Email</label>
                             </div>
                         </div>
                     </div>
-                    <div class="row">       <!--Password-->
-                        <div class="col-6 pb-2 text-center editName">
+                    <div class="row editRow">       <!--Password-->
+                        <div class="col-6 text-center editName">
                             <h5>Password Reset</h5>
                         </div>
-                        <div class="col-6 pb-3">
+                        <div class="col-6">
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-floating">
@@ -50,11 +50,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">       <!--Full Name-->
-                        <div class="col-6 pb-2 text-center editName">
+                    <div class="row editRow">       <!--Full Name-->
+                        <div class="col-6 text-center editName">
                             <h5>Full Name</h5>
                         </div>
-                        <div class="col-6 pb-3">
+                        <div class="col-6">
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-floating">
@@ -71,41 +71,41 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">       <!--Country-->
-                        <div class="col-6 pb-2 text-center editName">
+                    <div class="row editRow">       <!--Country-->
+                        <div class="col-6 text-center editName">
                             <h5>Country</h5>
                         </div>
-                        <div class="col-6 pb-3" style="text-align: start;">
+                        <div class="col-6" style="text-align: start;">
                             <div class="form-floating">
                                 <input type="text" class="form-control" [(ngModel)]="member.country" id="floatingCountry" name="country" placeholder="Country">
                                 <label for="floatingCountry">Country</label>
                             </div>
                         </div>
                     </div>
-                    <div class="row">       <!--CodeLanguage-->
-                        <div class="col-6 pb-2 text-center editName">
+                    <div class="row editRow">       <!--CodeLanguage-->
+                        <div class="col-6 text-center editName">
                             <h5>Preferred Coding Language</h5>
                         </div>
-                        <div class="col-6 pb-3" style="text-align: start;">
+                        <div class="col-6" style="text-align: start;">
                             <div class="form-floating">
                                 <input type="text" class="form-control" [(ngModel)]="member.codeLanguage" id="floatingCode" name="codeLanguage" placeholder="Code Language">
                                 <label for="floatingCode">Code Language</label>
                             </div>
                         </div>
                     </div>
-                    <div class="row">       <!--Bio-->
-                        <div class="col-6 pb-2 text-center editName">
+                    <div class="row editRow">       <!--Bio-->
+                        <div class="col-6 text-center editName">
                             <h5>Description</h5>
                         </div>
-                        <div class="col-6 pb-3" style="text-align: start;">
+                        <div class="col-6" style="text-align: start;">
                             <textarea type="text" class="form-control" [(ngModel)]="member.bio" style="max-height: 200px; min-height: 200px;" name="bio" placeholder="Description"></textarea>
                         </div>
                     </div>
-                    <div class="row">       <!--Social-->
-                        <div class="col-6 pb-2 text-center editName">
+                    <div class="row editRow">       <!--Social-->
+                        <div class="col-6 text-center editName">
                             <h5 for="fullname">Social URLs</h5>
                         </div>
-                        <div class="col-6 pb-3" style="text-align: start;">
+                        <div class="col-6" style="text-align: start;">
                             <div class="col-12 pb-3">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" [(ngModel)]="member.facebookURL" id="floatingFacebook" name="facebookURL" placeholder="Facebook">
@@ -132,14 +132,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">       <!--Photo-->
-                        <div class="col-6 pb-2 text-center editName">
+                    <div class="row editRow-last">  <!--Photo-->
+                        <div class="col-6 text-center editName">
                             <h5>Profile Photo</h5>
                         </div>
-                        <div class="col-6 pb-3" style="text-align: start;">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" [(ngModel)]="member.profilePhotoURL" id="floatingProfile" name="profilePhotoURL" placeholder="Profile Photo">
-                                <label for="floatingProfile">Profile Photo</label>
+                        <div class="col-6" style="text-align: start;">
+                            <div class="row" style="display: flex; align-items: flex-end;">
+                                <div class="col-8">
+                                    <img src="{{photo.url || './assets/user.png'}}" alt="photo.url" class="card-img-top img-thumbnail" style="size: 100px;">
+                                </div>
+                            </div>
+                            <div class="pt-1">
+                                <input class="form-control" type="file" ng2FileSelect [uploader]="uploader">
                             </div>
                         </div>
                     </div>
@@ -147,7 +151,7 @@
             </div>
             <div class="card-footer text-center p-3">
                 <div>
-                    <button class="btn btn-success btn-lg px-5" [disabled]="!editForm.dirty" form="editForm" type="submit">Save Changes</button>
+                    <button class="btn btn-success btn-lg px-5" (click)="uploader?.uploadAll()" form="editForm" type="submit">Save Changes</button>
                 </div>
             </div>
         </div>

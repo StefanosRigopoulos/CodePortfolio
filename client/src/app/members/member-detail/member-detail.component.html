@@ -54,16 +54,8 @@
                     <div class="col-3" *ngFor="let project of projects">
                         <app-project-card [project]="project" [member]="member"></app-project-card>
                     </div>
-                    <div class="col-3">
-                        <div class="card mb-4" (click)="projectForm()">
-                            <div class="card-header text-center mt-4" style="min-height: 143px;">
-                                <h1><i class="fa fa-plus"></i></h1>
-                            </div>
-                            <div class="card-body p-1">
-                                <h6 class="card-title text-center mb-1">Add</h6>
-                                <p class="card-text text-muted text-center">project</p>
-                            </div>
-                        </div>
+                    <div class="col-3 text-center pt-4">
+                        <button class="btn btn-success btn-xlg p-3" routerLink="/{{member.userName}}/create"><i class="fa fa-plus" style="font-size: 50px;"></i></button>
                     </div>
                 </div>
             </tab>

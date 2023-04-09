@@ -12,9 +12,9 @@ export class BusyService {
   busy() {
     this.busyRequestCount++;
     this.spinnerService.show(undefined, {
-      type: 'line-scale',
+      type: 'pacman',
       bdColor: 'rgba(0, 0, 0, 0.2)',
-      color: '#333333'
+      color: '#cccccc'
     });
   }
 

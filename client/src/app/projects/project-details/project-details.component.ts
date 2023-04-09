@@ -1,8 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
+import { Observable } from 'rxjs';
 import { Member } from 'src/app/_models/member';
 import { Project } from 'src/app/_models/project';
+import { User } from 'src/app/_models/user';
+import { AccountService } from 'src/app/_services/account.service';
+import { MembersService } from 'src/app/_services/members.service';
 import { ProjectsService } from 'src/app/_services/projects.service';
 
 @Component({
@@ -14,14 +18,20 @@ import { ProjectsService } from 'src/app/_services/projects.service';
 export class ProjectDetailsComponent implements OnInit {
   galleryOptions: NgxGalleryOptions[] = [];
   galleryImages: NgxGalleryImage[] = [];
-  project: Project | undefined;
-  pieces: string[] = [];
+  model: any = {};
+  project: Project;
 
-  constructor(private projectService: ProjectsService, private route: ActivatedRoute, private router: Router) { }
+  pieces: string[] = [];
+  username: string;
+  projectname: string;
+
+  constructor(private projectService: ProjectsService, public accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
     this.pieces = this.router.url.split('/');
-    this.loadProject(this.pieces[2], this.pieces[3]);
+    this.username = this.pieces[1];
+    this.projectname = this.pieces[3];
+    this.loadProject();
 
     this.galleryOptions = [
       {
@@ -50,10 +60,11 @@ export class ProjectDetailsComponent implements OnInit {
     return imageUrls;
   }
 
-  loadProject(username: string, projectName: string) {
-    if (!username || !projectName) return;
-    this.projectService.getProject(username, projectName).subscribe({
+  loadProject() {
+    if (!this.username || !this.projectname) return;
+    this.projectService.getProject(this.username, this.projectname).subscribe({
       next: project => {
+        this.model = project,
         this.project = project,
         this.galleryImages = this.getImages();
       }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Member } from '../_models/member';
 import { map, of } from 'rxjs';
+import { Project } from '../_models/project';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +37,9 @@ export class MembersService {
         this.members[index] = {...this.members[index], ...member}
       })
     );
+  }
+
+  createProject(project: Project) {
+    return this.http.post(this.baseUrl + 'users/create-project', project);
   }
 }

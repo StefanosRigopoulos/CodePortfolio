@@ -10,11 +10,15 @@ namespace API.Helpers
         public AutoMapperProfiles()
         {
             CreateMap<AppUser, MemberDTO>()
-                .ForMember(dest => dest.age, opt => opt.MapFrom(src => src.DateOfBirth.CalculateAge()));
+                .ForMember(dest => dest.age, opt => opt.MapFrom(src => src.DateOfBirth.CalculateAge()))
+                .ForMember(dest => dest.ProfilePhotoURL, opt => opt.MapFrom(src => src.Photo.URL));
+            CreateMap<Photo, PhotoDTO>();
             CreateMap<Project, ProjectDTO>()
-                .ForMember(dest => dest.MainPhotoURL, opt => opt.MapFrom(src => src.ProjectPhotos.FirstOrDefault().URL));
+                .ForMember(dest => dest.MainPhotoURL, opt => opt.MapFrom(src => src.ProjectPhotos.FirstOrDefault(x => x.IsMain).URL));
             CreateMap<ProjectPhoto, ProjectPhotoDTO>();
             CreateMap<MemberUpdateDTO, AppUser>();
+            CreateMap<ProjectUpdateDTO, Project>()
+                .ForMember(dest => dest.ProjectName, opt => opt.MapFrom(src => src.ProjectTitle.ToLower().Replace(" ","_")));
         }
     }
 }

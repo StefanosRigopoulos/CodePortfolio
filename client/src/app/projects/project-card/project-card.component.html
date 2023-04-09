@@ -1,5 +1,5 @@
 <div class="card mb-4" *ngIf="project">
-    <div class="card-img-wrapper rounded" routerLink="/members/{{member.userName}}/{{project.projectName}}">
+    <div class="card-img-wrapper rounded" routerLink="/{{member.userName}}/p/{{project.projectName}}/">
         <div class="ratio ratio-1x1">
             <img src="{{project.mainPhotoURL}}" alt="{{project.projectName}}" class="card-img-top">
         </div>

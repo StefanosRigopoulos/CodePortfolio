@@ -15,6 +15,7 @@ namespace API.DTOs
         public string Country { get; set; }
         public string CodeLanguage { get; set; }
         public string ProfilePhotoURL { get; set; }
+        public PhotoDTO Photo { get; set; }
         public List<ProjectDTO> Projects { get; set; } = new ();
         public string Bio { get; set; }
         public string FacebookURL { get; set; }

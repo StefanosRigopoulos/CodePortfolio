@@ -1,0 +1,29 @@
+<div class="row justify-content-center pt-1 ps-3 pe-3">
+    <div class="col-8">
+        <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+    </div>
+    <div class="col-4">
+        <div class="card" style="min-height: 800px;">
+            <div class="card-header text-center pt-3">
+                <h2>{{model.projectTitle}}</h2>
+            </div>
+            <div class="card-body p-3" style="min-height: 580px;">
+                <p>{{model.description}}</p>
+                <p>Language: {{model.language}}</p>
+            </div>
+            <div class="card-footer">
+                <ul class="list-inline pt-2 text-center">
+                    <li class="list-inline-item">
+                        <button class="btn btn-primary"><i class="fa fa-heart"></i></button>
+                    </li>
+                    <li class="list-inline-item">
+                        <button class="btn btn-info"><i class="fa fa-envelope"></i></button>
+                    </li>
+                    <li class="list-inline-item">
+                        <button class="btn btn-danger" routerLink="/{{username}}/p/{{projectname}}/edit"><i class="fa fa-wrench"></i></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,6 +7,7 @@ namespace API.Interfaces
     {
         void Update(Project project);
         Task<bool> SaveAllASync();
+        Task<Project> GetProjectEntityAsync(string username, string projectname);
         Task<IEnumerable<ProjectDTO>> GetProjectsAsync(string username);
         Task<ProjectDTO> GetProjectAsync(string username, string projectname);
     }

@@ -1,0 +1,81 @@
+<form #projectForm="ngForm" id="projectForm" (ngSubmit)="createProject()" autocomplete="off">
+    <div class="row justify-content-center pt-1 ps-3 pe-3">
+        <div class="col-8">
+            <div class="row">
+                <div class="col-4">
+                    <div ng2FileDrop
+                        [ngClass]="{'nv-file-over': HasBaseDropZoneOver}"
+                        (fileOver)="fileOverBase($event)"
+                        [uploader]="uploader"
+                        class="card bg-faded p-3 text-center mb-3 my-drop-zone">
+                        <i class="fa fa-upload fa-3x"></i>
+                        Drop Images
+                    </div>
+                </div>
+                <div class="col-8">
+                    <h3>Upload queue</h3>
+                    <p>Queue length: {{ uploader?.queue?.length }}</p>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th width="80%">Name</th>
+                            <th>Size</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let item of uploader.queue">
+                            <td><strong>{{item?.file?.name}}</strong></td>
+                            <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm" (click)="item.remove()"><i class="fa fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card" style="min-height: 770px;">
+                <div class="card-body" style="min-height: 550px;">
+                    <div class="form-floating pb-2">
+                        <input type="text"
+                               class="form-control"
+                               [(ngModel)]="model.projectTitle"
+                               id="projectTitle"
+                               name="projectTitle"
+                               maxlength="20"
+                               placeholder="Project Title">
+                        <label for="projectTitle">Project Title</label>
+                    </div>
+                    <div class="form-floating pb-2">
+                        <textarea type="text"
+                                  class="form-control"
+                                  [(ngModel)]="model.description"
+                                  style="min-width: 330px; max-height: 510px; min-height: 510px;"
+                                  id="description"
+                                  name="description"
+                                  placeholder="Description"></textarea>
+                        <label for="description">Description</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text"
+                               class="form-control"
+                               [(ngModel)]="model.language"
+                               id="language"
+                               name="language"
+                               maxlength="15"
+                               placeholder="Code Language">
+                        <label for="language">Code Language</label>
+                    </div>
+                </div>
+                <div class="card-footer text-center p-2">
+                    <div>
+                        <button class="btn btn-success btn-lg px-5" form="projectForm" type="submit">Create Project</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

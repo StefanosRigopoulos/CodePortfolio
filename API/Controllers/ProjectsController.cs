@@ -12,9 +12,12 @@ namespace API.Controllers
     {
         private readonly IProjectRepository _projectRepository;
         public IMapper _mapper { get; }
-        public ProjectsController(IProjectRepository projectRepository, IMapper mapper)
+        public IPhotoService _photoService { get; }
+
+        public ProjectsController(IProjectRepository projectRepository, IMapper mapper, IPhotoService photoService)
         {
             _mapper = mapper;
+            _photoService = photoService;
             _projectRepository = projectRepository;
         }
 
@@ -29,6 +32,107 @@ namespace API.Controllers
         public async Task<ActionResult<ProjectDTO>> GetProject(string username, string projectname)
         {
             return await _projectRepository.GetProjectAsync(username, projectname);
+        }
+
+        [HttpPut("{username}/{projectname}/edit")]
+        public async Task<ActionResult> UpdateProject(string username, string projectname, ProjectUpdateDTO projectUpdateDTO)
+        {
+            // Getting the project.
+            var project = await _projectRepository.GetProjectEntityAsync(username, projectname);
+            if (project == null) return NotFound();
+
+            // Mapping the received DTO to our project entity.
+            _mapper.Map(projectUpdateDTO, project);
+
+            // Saving changes.
+            if (await _projectRepository.SaveAllASync()) return NoContent();
+            return BadRequest("Failed to update project!");
+        }
+
+        [HttpPost("{username}/{projectname}/add-project-photo/")]
+        public async Task<ActionResult<ProjectPhotoDTO>> AddProjectPhoto(string username, string projectname, IFormFile file)
+        {
+            // Getting the project.
+            var project = await _projectRepository.GetProjectEntityAsync(username, projectname);
+            if (project == null) return NotFound();
+
+            // Upload new profile photo.
+            var result = await _photoService.AddProjectPhotoAsync(username, projectname, file);
+            if (result.Error != null) return BadRequest(result.Error.Message);
+
+            // Creating a new Photo object.
+            var photo = new ProjectPhoto
+            {
+                URL = result.SecureUrl.AbsoluteUri,
+                PublicId = result.PublicId
+            };
+
+            // Checking if this is the first photo of the project and if it is we make it main.
+            if (project.ProjectPhotos.Count == 0) photo.IsMain = true;
+
+            // Adding the photo entity to our table of project photos.
+            project.ProjectPhotos.Add(photo);
+
+            // Saving changes.
+            if (await _projectRepository.SaveAllASync())
+            {
+                return _mapper.Map<ProjectPhotoDTO>(photo);
+                //return CreatedAtAction(nameof(GetProject), new {projectname = project.ProjectName}, _mapper.Map<ProjectPhotoDTO>(photo));
+            }
+            return BadRequest("Problem adding photo!");
+        }
+
+        [HttpPut("{username}/{projectname}/set-main-photo/{photoId}")]
+        public async Task<ActionResult> SetMainProjectPhoto(string username, string projectname, int photoId)
+        {
+            // Getting the project.
+            var project = await _projectRepository.GetProjectEntityAsync(username, projectname);
+            if (project == null) return NotFound();
+
+            // Getting the photo with the certain ID.
+            var photo = project.ProjectPhotos.FirstOrDefault(x => x.Id == photoId);
+            if (photo == null) return NotFound();
+
+            // Check if photo is already main.
+            if (photo.IsMain) return BadRequest("This is already your main photo!");
+
+            // Configuring the photo to be the main.
+            var currentMain = project.ProjectPhotos.FirstOrDefault(x => x.IsMain);
+            if (currentMain != null) currentMain.IsMain = false;
+            photo.IsMain = true;
+
+            // Pushing changes to the database.
+            if (await _projectRepository.SaveAllASync()) return NoContent();
+            return BadRequest("Problem setting the main photo!");
+        }
+
+        [HttpDelete("{username}/{projectname}/delete-photo/{photoId}")]
+        public async Task<ActionResult> DeleteProjectPhoto(string username, string projectname, int photoId)
+        {
+            // Getting the project.
+            var project = await _projectRepository.GetProjectEntityAsync(username, projectname);
+            if (project == null) return NotFound();
+
+            // Getting the photo with the certain ID.
+            var photo = project.ProjectPhotos.FirstOrDefault(x => x.Id == photoId);
+            if (photo == null) return NotFound();
+
+            // Checking if this photo is the main.
+            if (photo.IsMain) return BadRequest("You cannot delete your main photo!");
+
+            // Checking if its a photo not uploaded to the cloud.
+            if (photo.PublicId != null)
+            {
+                var result = await _photoService.DeletePhotoAsync(photo.PublicId);
+                if (result.Error != null) return BadRequest(result.Error.Message);
+            }
+
+            // Removing the photo.
+            project.ProjectPhotos.Remove(photo);
+
+            // Saving changes.
+            if (await _projectRepository.SaveAllASync()) return Ok();
+            return BadRequest("Problem deleting photo!");
         }
     }
 }

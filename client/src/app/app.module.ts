@@ -22,10 +22,12 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { FooterComponent } from './footer/footer.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
-import { ProjectDetailsComponent } from './members/project-details/project-details.component';
-import { ProjectCardComponent } from './members/project-card/project-card.component';
+import { ProjectDetailsComponent } from './projects/project-details/project-details.component';
+import { ProjectCardComponent } from './projects/project-card/project-card.component';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
+import { ProjectCreationComponent } from './projects/project-creation/project-creation.component';
+import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
     FooterComponent,
     ProjectDetailsComponent,
     ProjectCardComponent,
-    MemberEditComponent
+    MemberEditComponent,
+    ProjectCreationComponent,
+    ProjectEditComponent
   ],
   imports: [
     BrowserModule,

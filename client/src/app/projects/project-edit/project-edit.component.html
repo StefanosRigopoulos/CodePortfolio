@@ -1,0 +1,68 @@
+<form #editForm="ngForm" id="editForm" (ngSubmit)="updateProject()">
+    <div class="row justify-content-center pt-1 ps-3 pe-3">
+        <div class="col-8">
+            <div class="row">
+                <div class="col-4" *ngFor="let photo of model.projectPhotos">
+                    <div class="card mb-4">
+                        <div class="card-img-wrapper rounded">
+                            <div class="ratio ratio-1x1">
+                                <img src="{{photo.url}}" alt="project photo" class="card-img-top">
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-1">
+                            <button class="btn btn-secondary"
+                                    [disabled]="photo.isMain"
+                                    (click)="setMainProjectPhoto(photo)"
+                                    [ngClass]="photo.isMain ? 'btn-success active' : 'btn-outline-success'">Set Main</button>
+                            <button class="btn btn-danger ms-1"
+                                    [disabled]="photo.isMain"
+                                    (click)="deleteProjectPhoto(photo.id)"><i class="fa fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card" style="min-height: 770px;">
+                <div class="card-body" style="min-height: 550px;">
+                    <div class="form-floating pb-2">
+                        <input type="text"
+                               class="form-control"
+                               [(ngModel)]="model.projectTitle"
+                               id="floatingTitle"
+                               name="projectTitle"
+                               placeholder="Project Title">
+                        <label for="floatingTitle">Project Title</label>
+                    </div>
+                    <div class="form-floating pb-2">
+                        <textarea type="text"
+                                  class="form-control"
+                                  [(ngModel)]="model.description"
+                                  style="min-width: 330px; max-height: 450px; min-height: 450px;"
+                                  id="floatingDescription"
+                                  name="description"
+                                  placeholder="Description"></textarea>
+                        <label for="floatingDescription">Description</label>
+                    </div>
+                    <div class="form-floating pb-2">
+                        <input type="text"
+                               class="form-control"
+                               [(ngModel)]="model.language"
+                               id="floatingLanguage"
+                               name="language"
+                               placeholder="Code Language">
+                        <label for="floatingLanguage">Code Language</label>
+                    </div>
+                    <div>
+                        <input class="form-control" type="file" ng2FileSelect [uploader]="uploader">
+                    </div>
+                </div>
+                <div class="card-footer text-center p-2">
+                    <div>
+                        <button class="btn btn-success btn-lg px-5" (click)="uploader?.uploadAll()" form="editForm" type="submit">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

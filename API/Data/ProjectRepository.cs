@@ -24,7 +24,12 @@ namespace API.Data
 
         public async Task<bool> SaveAllASync()
         {
-            return await _context.SaveChangesAsync() > 0;
+            return await _context.SaveChangesAsync() >= 0;
+        }
+
+        public async Task<Project> GetProjectEntityAsync(string username, string projectname)
+        {
+            return await _context.Projects.Include(p => p.ProjectPhotos).Where(x => x.AppUser.UserName == username).SingleOrDefaultAsync(x => x.ProjectName == projectname);
         }
 
         public async Task<IEnumerable<ProjectDTO>> GetProjectsAsync(string username)
@@ -34,7 +39,7 @@ namespace API.Data
 
         public async Task<ProjectDTO> GetProjectAsync(string username, string projectname)
         {
-            return await _context.Projects.Where(x => x.ProjectName == projectname).ProjectTo<ProjectDTO>(_mapper.ConfigurationProvider).FirstOrDefaultAsync();
+            return await _context.Projects.Where(x => (x.ProjectName == projectname) && (x.AppUser.UserName == username)).ProjectTo<ProjectDTO>(_mapper.ConfigurationProvider).FirstOrDefaultAsync();
         }
     }
 }

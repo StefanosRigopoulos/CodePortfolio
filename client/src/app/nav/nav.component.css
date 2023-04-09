@@ -2,7 +2,19 @@
     cursor: pointer;
 }
 
+.dropdown {
+    margin-left: 43px;
+}
+
 .btn {
     padding-top: 7px;
     height: 40px;
+}
+
+img {
+    max-height: 50px;
+    margin-left: 10px;
+    border: 2px solid white;
+    border-radius: 12px;
+    display: inline;
 }

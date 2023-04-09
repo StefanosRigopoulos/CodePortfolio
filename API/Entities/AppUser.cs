@@ -16,7 +16,7 @@ namespace API.Entities
         public string Gender { get; set; }
         public string Country { get; set; }
         public string CodeLanguage { get; set; }
-        public string ProfilePhotoURL { get; set; }
+        public Photo Photo { get; set; }
         public List<Project> Projects { get; set; } = new ();
         public string Bio { get; set; }
         public string FacebookURL { get; set; }

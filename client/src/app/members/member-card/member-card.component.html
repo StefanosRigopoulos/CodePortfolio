@@ -1,7 +1,7 @@
 <div class="card mb-4" *ngIf="member">
-    <div class="card-img-wrapper rounded" routerLink="/members/{{member.userName}}">
+    <div class="card-img-wrapper rounded" routerLink="/{{member.userName}}">
         <div class="ratio ratio-1x1">
-            <img src="{{member.profilePhotoURL}}" alt="{{member.nickName}}" class="card-img-top">
+            <img src="{{member.profilePhotoURL || './assets/user.png'}}" alt="{{member.nickName}}" class="card-img-top">
         </div>
     </div>
     <div class="card-body p-1">

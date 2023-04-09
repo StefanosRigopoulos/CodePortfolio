@@ -1,13 +1,24 @@
-/*.editName {
-    margin: auto;
-    border-radius: 15px;
-    border-bottom: 2px solid rgb(0, 67, 79);
-    max-width: 350px;
-}*/
-
 .editName {
-    margin: auto;
+    align-items: center;
+    text-align: center;
+    border-right: 2px solid;
+    border-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgb(156, 156, 156), rgba(0, 0, 0, 0)) 1;
+    padding-top: 20px;
+    border-radius: 20px;
+}
+
+.editRow {
+    padding-top: 20px;
+    padding-bottom: 20px;
     border-bottom: 2px solid;
-    max-width: 400px;
-    border-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(0, 38, 45), rgba(0, 0, 0, 0)) 1;
+    border-image: linear-gradient(to right, rgba(0, 0, 0, 0), #e83283, rgba(0, 0, 0, 0)) 1;
+}
+
+.editRow-last {
+    padding-top: 20px;
+}
+
+.img-thumbnail {
+    background-color: #434343;
+    border: 1px #434343;
 }

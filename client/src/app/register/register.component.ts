@@ -10,7 +10,6 @@ import { AccountService } from '../_services/account.service';
 })
 
 export class RegisterComponent implements OnInit {
-  @Output() cancelRegister = new EventEmitter();
   model:any = {};
 
   constructor(private accountService: AccountService, private router: Router, private toastr: ToastrService) { }
@@ -24,7 +23,6 @@ export class RegisterComponent implements OnInit {
       this.accountService.register(this.model).subscribe({
         next: () => {
           this.router.navigateByUrl('/');
-          this.cancel();
         },
         error: error => {
           this.toastr.error(error.error);
@@ -33,9 +31,5 @@ export class RegisterComponent implements OnInit {
     } else {
       this.toastr.error("You have to accept the Terms Of Service!");
     }
-  }
-
-  cancel(){
-    this.cancelRegister.emit(false);
   }
 }

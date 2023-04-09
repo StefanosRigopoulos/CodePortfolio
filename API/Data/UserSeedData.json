@@ -12,7 +12,10 @@
         "Country": "Greece",
         "CodeLanguage": "C#",
         "Bio": "Best dev ever existed!",
-        "ProfilePhotoURL": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "Photo":
+        {
+            "URL": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+        },
         "Projects": [
             {
                 "ProjectName": "website_application",
@@ -21,16 +24,20 @@
                 "Description": "We created a template for an upcoming web application.",
                 "ProjectPhotos": [
                     {
-                        "URL": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": true
                     },
                     {
-                        "URL": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": false
                     },
                     {
-                        "URL": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": false
                     },
                     {
-                        "URL": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": false
                     }
                 ]
             },
@@ -41,16 +48,20 @@
                 "Description": "We tried to create a mobile application focused on navigating the user to the best suited places for his amusement.",
                 "ProjectPhotos": [
                     {
-                        "URL": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": false
                     },
                     {
-                        "URL": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": true
                     },
                     {
-                        "URL": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": false
                     },
                     {
-                        "URL": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": false
                     }
                 ]
             },
@@ -61,16 +72,20 @@
                 "Description": "We made the best game ever existed.",
                 "ProjectPhotos": [
                     {
-                        "URL": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": false
                     },
                     {
-                        "URL": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": false
                     },
                     {
-                        "URL": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": true
                     },
                     {
-                        "URL": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": false
                     }
                 ]
             },
@@ -81,16 +96,20 @@
                 "Description": "I am trying to learn how to connect different modules and make them interact with each other.",
                 "ProjectPhotos": [
                     {
-                        "URL": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": false
                     },
                     {
-                        "URL": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": false
                     },
                     {
-                        "URL": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": false
                     },
                     {
-                        "URL": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": true
                     }
                 ]
             }
@@ -113,7 +132,10 @@
         "Country": "Greece",
         "CodeLanguage": "Java",
         "Bio": "Worst dev ever existed!",
-        "ProfilePhotoURL": "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fG1hbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+        "Photo":
+        {
+            "URL": "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fG1hbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+        },
         "Projects": [
             {
                 "ProjectName": "mobile_application",
@@ -122,16 +144,20 @@
                 "Description": "We tried to create a mobile application focused on navigating the user to the best suited places for his amusement.",
                 "ProjectPhotos": [
                     {
-                        "URL": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": true
                     },
                     {
-                        "URL": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": false
                     },
                     {
-                        "URL": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": false
                     },
                     {
-                        "URL": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": false
                     }
                 ]
             }
@@ -150,7 +176,10 @@
         "Country": "Greece",
         "CodeLanguage": "Scratch",
         "Bio": "Whatever!",
-        "ProfilePhotoURL": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fHdvbWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "Photo":
+        {
+            "URL": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fHdvbWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+        },
         "Projects": [
             {
                 "ProjectName": "learning_connections",
@@ -159,16 +188,20 @@
                 "Description": "I am trying to learn how to connect different modules and make them interact with each other.",
                 "ProjectPhotos": [
                     {
-                        "URL": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": true
                     },
                     {
-                        "URL": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmclMjBjb2RlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": false
                     },
                     {
-                        "URL": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": false
                     },
                     {
-                        "URL": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                        "URL": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHByb2dyYW1taW5nJTIwY29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+                        "IsMain": false
                     }
                 ]
             }
