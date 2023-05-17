@@ -5,25 +5,15 @@
                 <div class="mb-md-4 mt-md-2">
                     <h2 class="fw-bold mb-2 text-uppercase">Sign In</h2>
                     <p class="text-white-50 mb-4">Please enter your username and password!</p>
-                    <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
-                        <div class="form-outline form-white mb-3">
-                            <input 
-                                name="username"
-                                [(ngModel)]="model.username"
-                                class="form-control form-control-lg"
-                                type="text"
-                                placeholder="Username">
-                        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 64px;"></div><div class="form-notch-trailing"></div></div></div>
-                        <div class="form-outline form-white mb-3">
-                            <input 
-                                name="password"
-                                [(ngModel)]="model.password"
-                                class="form-control form-control-lg"
-                                type="password"
-                                placeholder="Password">
-                        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 64px;"></div><div class="form-notch-trailing"></div></div></div>
+                    <form [formGroup]="loginForm" id="msform" autocomplete="off">
+                        <div class="form-outline mb-2">
+                            <app-text-input [formControl]="loginForm.controls['username']" [label]="'Username'"></app-text-input>
+                        </div>
+                        <div class="form-outline mb-2">
+                            <app-text-input [formControl]="loginForm.controls['password']" [label]="'Password'" [type]="'password'"></app-text-input>
+                        </div>
                         <p class="small"><a class="text-white-50" routerLink="/reset" routerLinkActive="active">Forgot password?</a></p>
-                        <button class="btn btn-dark btn-lg px-5" type="submit">Login</button>
+                        <button class="btn btn-dark btn-lg btn-block px-4 ms-2" type="submit" (click)="submit()" [disabled]="!loginForm.valid">Sign In</button>
                     </form>
                 </div>
             <div>

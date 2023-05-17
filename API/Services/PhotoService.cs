@@ -35,12 +35,6 @@ namespace API.Services
 
             return uploadResult;
         }
-        public async Task<DeletionResult> DeletePhotoAsync(string publicId)
-        {
-            var deleteParams = new DeletionParams(publicId);
-
-            return await _cloudinary.DestroyAsync(deleteParams);
-        }
 
         // Project
         public async Task<ImageUploadResult> AddProjectPhotoAsync(string username, string projectname, IFormFile file)
@@ -59,6 +53,19 @@ namespace API.Services
             }
 
             return uploadResult;
+        }
+
+        public async Task<DeletionResult> DeletePhotoAsync(string publicId)
+        {
+            var deleteParams = new DeletionParams(publicId);
+
+            return await _cloudinary.DestroyAsync(deleteParams);
+        }
+
+        public async Task DeleteProjectFolder(string username, string projectname)
+        {
+            // TODO Does not delete neither the folder nor the images inside of it.
+            await _cloudinary.DeleteResourcesByPrefixAsync($"codeportfolio/{username}/{projectname}/", cancellationToken: default);
         }
     }
 }

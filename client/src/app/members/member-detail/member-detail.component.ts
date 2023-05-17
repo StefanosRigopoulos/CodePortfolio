@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Member } from 'src/app/_models/member';
 import { Project } from 'src/app/_models/project';
@@ -13,11 +14,13 @@ import { MembersService } from 'src/app/_services/members.service';
 export class MemberDetailComponent implements OnInit {
   member: Member | undefined;
   projects: Project[] = [];
+  contactForm: FormGroup = new FormGroup({});
 
-  constructor(private memberService: MembersService, private route: ActivatedRoute) { }
+  constructor(private memberService: MembersService, private route: ActivatedRoute, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.loadMember();
+    //this.initializeContactForm();
   }
 
   loadMember(){
@@ -51,7 +54,15 @@ export class MemberDetailComponent implements OnInit {
     return true;
   }
 
-  projectForm(){
-    
-  }
+  // initializeContactForm(){
+  //   this.contactForm = this.fb.group({
+  //     fullname: ['', Validators.required],
+  //     email: ['', [Validators.required, Validators.email]],
+  //     subject: ['', Validators.required],
+  //     message: ['', Validators.required]
+  //   })
+  // }
+
+  // submit(){
+  // }
 }

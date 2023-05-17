@@ -29,7 +29,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row editRow">       <!--Password-->
+                <!--
+                    <div class="row editRow">       Password
                         <div class="col-6 text-center editName">
                             <h5>Password Reset</h5>
                         </div>
@@ -50,6 +51,7 @@
                             </div>
                         </div>
                     </div>
+                -->
                     <div class="row editRow">       <!--Full Name-->
                         <div class="col-6 text-center editName">
                             <h5>Full Name</h5>
@@ -76,10 +78,50 @@
                             <h5>Country</h5>
                         </div>
                         <div class="col-6" style="text-align: start;">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" [(ngModel)]="member.country" id="floatingCountry" name="country" placeholder="Country">
-                                <label for="floatingCountry">Country</label>
-                            </div>
+                            <select class="form-select" [(ngModel)]="member.country" id="countrySelect" name="country" [value]="member.country">
+                                <option>Albania</option>
+                                <option>Andorra</option>
+                                <option>Austria</option>
+                                <option>Belarus</option>
+                                <option>Belgium</option>
+                                <option>Bosnia and Herzegovina</option>
+                                <option>Bulgaria</option>
+                                <option>Croatia</option>
+                                <option>Czech Republic</option>
+                                <option>Denmark</option>
+                                <option>Estonia</option>
+                                <option>Finland</option>
+                                <option>France</option>
+                                <option>Germany</option>
+                                <option>Greece</option>
+                                <option>Hungary</option>
+                                <option>Iceland</option>
+                                <option>Italy</option>
+                                <option>Latvia</option>
+                                <option>Liechtenstein</option>
+                                <option>Lithuania</option>
+                                <option>Luxembourg</option>
+                                <option>Malta</option>
+                                <option>Moldova</option>
+                                <option>Monaco</option>
+                                <option>Montenegro</option>
+                                <option>Netherlands</option>
+                                <option>North Macedonia</option>
+                                <option>Norway</option>
+                                <option>Poland</option>
+                                <option>Portugal</option>
+                                <option>Romania</option>
+                                <option>Russia</option>
+                                <option>San Marino</option>
+                                <option>Serbia</option>
+                                <option>Slovakia</option>
+                                <option>Slovenia</option>
+                                <option>Spain</option>
+                                <option>Sweden</option>
+                                <option>Switzerland</option>
+                                <option>Ukraine</option>
+                                <option>United Kingdom</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row editRow">       <!--CodeLanguage-->
@@ -87,10 +129,44 @@
                             <h5>Preferred Coding Language</h5>
                         </div>
                         <div class="col-6" style="text-align: start;">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" [(ngModel)]="member.codeLanguage" id="floatingCode" name="codeLanguage" placeholder="Code Language">
-                                <label for="floatingCode">Code Language</label>
-                            </div>
+                            <select class="form-select" [(ngModel)]="member.codeLanguage" id="codeLanguageSelect" name="codeLanguage" [value]="member.codeLanguage">
+                                    <option>Assembly Language</option>
+                                    <option>Ada</option>
+                                    <option>Bash</option>
+                                    <option>C</option>
+                                    <option>C++</option>
+                                    <option>C#</option>
+                                    <option>COBOL</option>
+                                    <option>D</option>
+                                    <option>Dart</option>
+                                    <option>Delphi</option>
+                                    <option>Fortran</option>
+                                    <option>Go</option>
+                                    <option>Haskell</option>
+                                    <option>Java</option>
+                                    <option>JavaScript</option>
+                                    <option>Julia</option>
+                                    <option>Kotlin</option>
+                                    <option>Lisp</option>
+                                    <option>Logo</option>
+                                    <option>Lua</option>
+                                    <option>MATLAB</option>
+                                    <option>Objective C</option>
+                                    <option>Perl</option>
+                                    <option>PHP</option>
+                                    <option>Prolog</option>
+                                    <option>Python</option>
+                                    <option>R</option>
+                                    <option>Ruby</option>
+                                    <option>Rust</option>
+                                    <option>SAS</option>
+                                    <option>Scala</option>
+                                    <option>Scratch</option>
+                                    <option>SQL</option>
+                                    <option>Swift</option>
+                                    <option>Transact SQL</option>
+                                    <option>Visual Basic</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row editRow">       <!--Bio-->

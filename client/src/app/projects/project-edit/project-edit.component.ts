@@ -66,6 +66,16 @@ export class ProjectEditComponent implements OnInit {
       next: _ => {
         this.toastr.success("Project updated successfully!");
         this.editForm?.reset(this.project);
+        this.router.navigateByUrl('/' + this.user.username + '/p/' + this.project.projectName);
+      }
+    });
+  }
+
+  deleteProject() {  //TODO
+    this.projectService.deleteProject(this.username, this.projectname).subscribe({
+      next: _ => {
+        this.toastr.success("Project deleted successfully!");
+        this.router.navigateByUrl('/' + this.user.username);
       }
     });
   }
@@ -89,6 +99,7 @@ export class ProjectEditComponent implements OnInit {
       if (response) {
         const photo = JSON.parse(response);
         this.project?.projectPhotos.push(photo);
+        // If there is any problem check (vid 149) at 13:20 and onwards
       }
     }
   }

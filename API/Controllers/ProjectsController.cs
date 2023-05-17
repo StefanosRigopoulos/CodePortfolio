@@ -77,9 +77,23 @@ namespace API.Controllers
             if (await _projectRepository.SaveAllASync())
             {
                 return _mapper.Map<ProjectPhotoDTO>(photo);
-                //return CreatedAtAction(nameof(GetProject), new {projectname = project.ProjectName}, _mapper.Map<ProjectPhotoDTO>(photo));
             }
             return BadRequest("Problem adding photo!");
+        }
+
+        [HttpDelete("{username}/{projectname}/delete")]
+        public async Task<ActionResult> DeleteProject(string username, string projectname)
+        {
+            // Getting the project.
+            var project = await _projectRepository.GetProjectEntityAsync(username, projectname);
+            if (project == null) return NotFound();
+
+            if (!_projectRepository.DeleteProjectAsync(project)) return BadRequest("Project can not be deleted from the repository!");
+            await _photoService.DeleteProjectFolder(username, projectname);
+
+            // Saving changes.
+            if (await _projectRepository.SaveAllASync()) return Ok();
+            return BadRequest("Problem deleting project!");
         }
 
         [HttpPut("{username}/{projectname}/set-main-photo/{photoId}")]

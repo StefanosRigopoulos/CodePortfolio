@@ -57,9 +57,11 @@ namespace API.Controllers
             if (user == null) return NotFound();
 
             // Delete previous profile photo from our database.
-            if (user.Photo.PublicId != null) {
-                var delete = await _photoService.DeletePhotoAsync(user.Photo.PublicId);
-                if (delete.Error != null) return BadRequest(delete.Error.Message);
+            if (user.Photo != null) {
+                if (user.Photo.PublicId != null) {
+                    var delete = await _photoService.DeletePhotoAsync(user.Photo.PublicId);
+                    if (delete.Error != null) return BadRequest(delete.Error.Message);
+                }
             }
 
             // Upload new profile photo.

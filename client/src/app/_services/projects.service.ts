@@ -27,6 +27,10 @@ export class ProjectsService {
     return this.http.put(this.baseUrl + 'projects/' + username + '/' + projectname + '/set-main-photo/' + photoId, photoId)
   }
 
+  deleteProject(username: string, projectname: string) {
+    return this.http.delete(this.baseUrl + 'projects/' + username + '/' + projectname + '/delete')
+  }
+
   deleteProjectPhoto(username: string, projectname: string, photoId: number) {
     return this.http.delete(this.baseUrl + 'projects/' + username + '/' + projectname + '/delete-photo/' + photoId)
   }

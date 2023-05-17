@@ -44,22 +44,58 @@
                                   placeholder="Description"></textarea>
                         <label for="floatingDescription">Description</label>
                     </div>
-                    <div class="form-floating pb-2">
-                        <input type="text"
-                               class="form-control"
-                               [(ngModel)]="model.language"
-                               id="floatingLanguage"
-                               name="language"
-                               placeholder="Code Language">
-                        <label for="floatingLanguage">Code Language</label>
+                    <div class="form-group pb-2">
+                        <select class="form-select" id="language" [(ngModel)]="model.language" name="language">
+                                    <option>Assembly Language</option>
+                                    <option>Ada</option>
+                                    <option>Bash</option>
+                                    <option>C</option>
+                                    <option>C++</option>
+                                    <option>C#</option>
+                                    <option>COBOL</option>
+                                    <option>D</option>
+                                    <option>Dart</option>
+                                    <option>Delphi</option>
+                                    <option>Fortran</option>
+                                    <option>Go</option>
+                                    <option>Haskell</option>
+                                    <option>Java</option>
+                                    <option>JavaScript</option>
+                                    <option>Julia</option>
+                                    <option>Kotlin</option>
+                                    <option>Lisp</option>
+                                    <option>Logo</option>
+                                    <option>Lua</option>
+                                    <option>MATLAB</option>
+                                    <option>Objective C</option>
+                                    <option>Perl</option>
+                                    <option>PHP</option>
+                                    <option>Prolog</option>
+                                    <option>Python</option>
+                                    <option>R</option>
+                                    <option>Ruby</option>
+                                    <option>Rust</option>
+                                    <option>SAS</option>
+                                    <option>Scala</option>
+                                    <option>Scratch</option>
+                                    <option>SQL</option>
+                                    <option>Swift</option>
+                                    <option>Transact SQL</option>
+                                    <option>Visual Basic</option>
+                        </select>
                     </div>
                     <div>
                         <input class="form-control" type="file" ng2FileSelect [uploader]="uploader">
                     </div>
                 </div>
                 <div class="card-footer text-center p-2">
-                    <div>
-                        <button class="btn btn-success btn-lg px-5" (click)="uploader?.uploadAll()" form="editForm" type="submit">Save Changes</button>
+                    <div class="row">
+                        <div class="col-6">
+                            <button class="btn btn-danger btn-lg px-4" (click)="deleteProject()"> Delete</button>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-success btn-lg px-4" (click)="uploader?.uploadAll()" form="editForm" type="submit">Save</button>
+                        </div>
                     </div>
                 </div>
             </div>

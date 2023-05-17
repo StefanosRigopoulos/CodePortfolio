@@ -41,5 +41,11 @@ namespace API.Data
         {
             return await _context.Projects.Where(x => (x.ProjectName == projectname) && (x.AppUser.UserName == username)).ProjectTo<ProjectDTO>(_mapper.ConfigurationProvider).FirstOrDefaultAsync();
         }
+
+        public bool DeleteProjectAsync(Project project)
+        {
+            if (_context.Projects.Remove(project) != null) return true;
+            return false;
+        }
     }
 }

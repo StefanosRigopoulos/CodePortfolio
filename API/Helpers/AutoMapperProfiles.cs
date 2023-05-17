@@ -16,9 +16,12 @@ namespace API.Helpers
             CreateMap<Project, ProjectDTO>()
                 .ForMember(dest => dest.MainPhotoURL, opt => opt.MapFrom(src => src.ProjectPhotos.FirstOrDefault(x => x.IsMain).URL));
             CreateMap<ProjectPhoto, ProjectPhotoDTO>();
-            CreateMap<MemberUpdateDTO, AppUser>();
+            CreateMap<MemberUpdateDTO, AppUser>()
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));    // Exclude the fields that come in as null.
             CreateMap<ProjectUpdateDTO, Project>()
-                .ForMember(dest => dest.ProjectName, opt => opt.MapFrom(src => src.ProjectTitle.ToLower().Replace(" ","_")));
+                .ForMember(dest => dest.ProjectName, opt => opt.MapFrom(src => src.ProjectTitle.ToLower().Replace(" ","_")))
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));    // Exclude the fields that come in as null.
+            CreateMap<RegisterDTO, AppUser>();
         }
     }
 }
