@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FileUploader } from 'ng2-file-upload';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
+import { Lists } from 'src/app/_lists/lists';
 import { Photo } from 'src/app/_models/photo';
 import { Project } from 'src/app/_models/project';
 import { User } from 'src/app/_models/user';
@@ -51,6 +52,8 @@ export class ProjectEditComponent implements OnInit {
     this.initializeUploader();
   }
 
+  get codeList() { return Lists.CodeLanguageList }
+
   loadProject(username: string, projectName: string) {
     if (!username || !projectName) return;
     this.projectService.getProject(username, projectName).subscribe({
@@ -66,7 +69,7 @@ export class ProjectEditComponent implements OnInit {
       next: _ => {
         this.toastr.success("Project updated successfully!");
         this.editForm?.reset(this.project);
-        this.router.navigateByUrl('/' + this.user.username + '/p/' + this.project.projectName);
+        this.router.navigateByUrl('/' + this.user.username);
       }
     });
   }

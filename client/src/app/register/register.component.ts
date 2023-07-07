@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../_services/account.service';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Lists } from '../_lists/lists';
 
 @Component({
   selector: 'app-register',
@@ -43,7 +44,7 @@ export class RegisterComponent implements OnInit {
     });
     this.registerForm.controls['password'].valueChanges.subscribe({
       next: () => this.registerForm.controls['confirmPassword'].updateValueAndValidity()
-    })
+    });
   }
 
   matchValuesValidator(matchTo: string): ValidatorFn {
@@ -54,6 +55,8 @@ export class RegisterComponent implements OnInit {
   }
 
   get control() { return this.registerForm.controls }
+  get codeList() { return Lists.CodeLanguageList }
+  get countryList() { return Lists.CountryList }
 
   next() {
     this.step++;

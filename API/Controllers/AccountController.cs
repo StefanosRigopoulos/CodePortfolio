@@ -44,7 +44,10 @@ namespace API.Controllers
             return new UserDTO
             {
                 Username = user.UserName,
-                Token = _tokenService.CreateToken(user)
+                Nickname = user.NickName,
+                Token = _tokenService.CreateToken(user),
+                ProfilePhotoURL = user.Photo?.URL,
+                CodeLanguage = user.CodeLanguage
             };
         }
 
@@ -65,8 +68,10 @@ namespace API.Controllers
             return new UserDTO
             {
                 Username = user.UserName,
+                Nickname = user.NickName,
                 Token = _tokenService.CreateToken(user),
-                ProfilePhotoURL = user.Photo?.URL
+                ProfilePhotoURL = user.Photo?.URL,
+                CodeLanguage = user.CodeLanguage
             };
         }
 

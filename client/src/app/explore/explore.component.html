@@ -1,5 +1,65 @@
-<div class="row">
-    <div class="col-2" *ngFor="let member of members$ | async">
+<div class="d-flex justify-content-center">
+    <form #form="ngForm" autocomplete="off">
+        <div class="row text-center pb-2">
+            <h3>Explore our community.</h3>
+        </div>
+        <div class="row pb-2" style="min-width: 1100px;">
+            <div class="col-2">
+                <label class="col-form-label">Coding Language: </label>
+            </div>
+            <div class="col-3">
+                <select name="codeLanguage" class="form-select" [(ngModel)]="userParams.codeLanguage">
+                    <option *ngFor="let codeLanguage of codeList" [value]="codeLanguage.value">
+                        {{codeLanguage.display}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-1">
+                <button class="btn btn-primary btn-lg" type="submit" (click)="loadMembers()">Apply</button>
+            </div>
+            <div class="col-1">
+                <button class="btn btn-info btn-lg" type="submit" (click)="resetFilters()">Reset</button>
+            </div>
+            <div class="col-4">
+                <div class="btn-group float-end">
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        name="orderBy"
+                        [(ngModel)]="userParams.orderBy"
+                        btnRadio="lastActive"
+                        (click)="loadMembers()">Last Active</button>
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        name="orderBy"
+                        [(ngModel)]="userParams.orderBy"
+                        btnRadio="created"
+                        (click)="loadMembers()">Newest Members</button>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center pb-1">
+            <label> We have found <label style="font-size: x-large; color: whitesmoke;">{{pagination?.totalItems}}</label> developers.</label>
+        </div>
+    </form>
+</div>
+
+<div class="row d-flex">
+    <div class="col-3" *ngFor="let member of members">
         <app-member-card [member]="member"></app-member-card>
     </div>
+</div>
+<div class="d-flex justify-content-center" *ngIf="pagination">
+    <pagination [boundaryLinks]="true"
+                [totalItems]="pagination.totalItems"
+                [itemsPerPage]="pagination.itemsPerPage"
+                [maxSize]="10"
+                [(ngModel)]="pagination.currentPage"
+                (pageChanged)="pageChanged($event)"
+                previousText="&lsaquo;"
+                nextText="&rsaquo;"
+                firstText="&laquo;"
+                lastText="&raquo;">
+    </pagination>
 </div>

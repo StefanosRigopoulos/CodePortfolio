@@ -31,24 +31,35 @@
             <div class="card-body">
                 <h5 class="card-title text-center" style="margin-top: -20px;">{{member.nickName}}</h5>
                 <hr>
-                <div>
-                    <strong>Coding Language:</strong>
-                    <p>{{member.codeLanguage}}</p>
+                <div class="row">
+                    <div class="col-6">
+                        <strong>Coding Language:</strong>
+                    </div>
+                    <div class="col">
+                        <p>{{member.codeLanguage}}</p>
+                    </div>
                 </div>
-                <div>
-                    <strong>Location:</strong>
-                    <p>{{member.country}}</p>
+                <div class="row">
+                    <div class="col-6">
+                        <strong>Last Active:</strong>
+                    </div>
+                    <div class="col">
+                        <p>{{member.lastActive + 'Z' | timeago}}</p>
+                    </div>
                 </div>
-                <div>
-                    <strong>Member Since:</strong>
-                    <p>{{member.created}}</p>
+                <div class="row">
+                    <div class="col-6">
+                        <strong>Member Since:</strong>
+                    </div>
+                    <div class="col">
+                        <p>{{member.created | date: 'dd MMMM YYYY'}}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-8">
         <tabset class="member-tabset">
-            <!--projects, about, contact-->
             <tab heading="Projects">
                 <div class="row">
                     <div class="col-3" *ngFor="let project of projects">
@@ -60,53 +71,47 @@
                 </div>
             </tab>
             <tab heading="About">
-                <h4>Full Name:</h4>
-                <p>{{member.firstName}} {{member.lastName}}</p>
-                <h4>Email</h4>
-                <p>{{member.email}}</p>
-                <h4>Country</h4>
-                <p>{{member.country}}</p>
-                <h4>Description</h4>
-                <p>{{member.bio}}</p>
-            </tab>
-            <!--
-            <tab heading="Contact">
-                <div class="row d-flex justify-content-center pt-3">
-                    <div class="col-8">
-                        <div class="card" style="border-radius: 20px;">
-                            <div class="card-body pt-3 pb-3 p-4">
-                                <form [formGroup]="contactForm" autocomplete="off">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-outline">
-                                                <h5 for="fullname">Full Name</h5>
-                                                <app-text-input [formControl]="contactForm.controls['fullname']" [label]="'Enter your name'"></app-text-input>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-outline">
-                                                <h5 for="email">Email</h5>
-                                                <app-text-input [formControl]="contactForm.controls['email']" [label]="'Enter your email'"></app-text-input>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-outline">
-                                        <h5 for="subject">Subject</h5>
-                                        <app-text-input [formControl]="contactForm.controls['subject']" [label]="'Subject'"></app-text-input>
-                                    </div>
-                                    <div class="form-outline">
-                                        <h5 for="message">Message</h5>
-                                        <textarea class="form-control message"></textarea>
-                                    </div>
-                                    <div class="text-center pt-2">
-                                        <button class="btn btn-primary" type="submit" (click)="submit()" [disabled]="!contactForm.valid">Send</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-2">
+                        <h5>Full Name:</h5>
+                    </div>
+                    <div class="col pb-1">
+                        <label>{{member.firstName}} {{member.lastName}}</label>
                     </div>
                 </div>
-            </tab> -->
+                <div class="row">
+                    <div class="col-2">
+                        <h5>Email:</h5>
+                    </div>
+                    <div class="col pb-1">
+                        <label>{{member.email}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <h5>Age:</h5>
+                    </div>
+                    <div class="col pb-1">
+                        <label>{{member.age}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <h5>Country:</h5>
+                    </div>
+                    <div class="col pb-1">
+                        <label>{{member.country}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <h5>Description:</h5>
+                    </div>
+                    <div class="col pb-1">
+                        <label>{{member.bio}}</label>
+                    </div>
+                </div>
+            </tab>
         </tabset>
     </div>
 </div>

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FileUploader } from 'ng2-file-upload';
 import { ToastrService } from 'ngx-toastr';
 import { delay, take } from 'rxjs';
+import { Lists } from 'src/app/_lists/lists';
 import { Member } from 'src/app/_models/member';
 import { Project } from 'src/app/_models/project';
 import { User } from 'src/app/_models/user';
@@ -55,6 +56,8 @@ constructor(private accountService: AccountService, private memberService: Membe
       }
     })
   }
+
+  get codeList() { return Lists.CodeLanguageList }
 
   createProject() {
     this.projectname = this.model.projectTitle.replaceAll(" ", "_").toLowerCase();

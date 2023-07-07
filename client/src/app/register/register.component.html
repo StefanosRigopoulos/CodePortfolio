@@ -60,48 +60,9 @@
                                         </div>
                                         <div class="col-7">
                                             <select class="form-select" id="countrySelect" formControlName="country">
-                                                <option>Albania</option>
-                                                <option>Andorra</option>
-                                                <option>Austria</option>
-                                                <option>Belarus</option>
-                                                <option>Belgium</option>
-                                                <option>Bosnia and Herzegovina</option>
-                                                <option>Bulgaria</option>
-                                                <option>Croatia</option>
-                                                <option>Czech Republic</option>
-                                                <option>Denmark</option>
-                                                <option>Estonia</option>
-                                                <option>Finland</option>
-                                                <option>France</option>
-                                                <option>Germany</option>
-                                                <option>Greece</option>
-                                                <option>Hungary</option>
-                                                <option>Iceland</option>
-                                                <option>Italy</option>
-                                                <option>Latvia</option>
-                                                <option>Liechtenstein</option>
-                                                <option>Lithuania</option>
-                                                <option>Luxembourg</option>
-                                                <option>Malta</option>
-                                                <option>Moldova</option>
-                                                <option>Monaco</option>
-                                                <option>Montenegro</option>
-                                                <option>Netherlands</option>
-                                                <option>North Macedonia</option>
-                                                <option>Norway</option>
-                                                <option>Poland</option>
-                                                <option>Portugal</option>
-                                                <option>Romania</option>
-                                                <option>Russia</option>
-                                                <option>San Marino</option>
-                                                <option>Serbia</option>
-                                                <option>Slovakia</option>
-                                                <option>Slovenia</option>
-                                                <option>Spain</option>
-                                                <option>Sweden</option>
-                                                <option>Switzerland</option>
-                                                <option>Ukraine</option>
-                                                <option>United Kingdom</option>
+                                                <option *ngFor="let country of countryList" [value]="country.value">
+                                                    {{country.display}}
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -113,42 +74,9 @@
                                         </div>
                                         <div class="col-7">
                                             <select class="form-select" id="codeLanguageSelect" formControlName="codelanguage">
-                                                <option>Assembly Language</option>
-                                                <option>Ada</option>
-                                                <option>Bash</option>
-                                                <option>C</option>
-                                                <option>C++</option>
-                                                <option>C#</option>
-                                                <option>COBOL</option>
-                                                <option>D</option>
-                                                <option>Dart</option>
-                                                <option>Delphi</option>
-                                                <option>Fortran</option>
-                                                <option>Go</option>
-                                                <option>Haskell</option>
-                                                <option>Java</option>
-                                                <option>JavaScript</option>
-                                                <option>Julia</option>
-                                                <option>Kotlin</option>
-                                                <option>Lisp</option>
-                                                <option>Logo</option>
-                                                <option>Lua</option>
-                                                <option>MATLAB</option>
-                                                <option>Objective C</option>
-                                                <option>Perl</option>
-                                                <option>PHP</option>
-                                                <option>Prolog</option>
-                                                <option>Python</option>
-                                                <option>R</option>
-                                                <option>Ruby</option>
-                                                <option>Rust</option>
-                                                <option>SAS</option>
-                                                <option>Scala</option>
-                                                <option>Scratch</option>
-                                                <option>SQL</option>
-                                                <option>Swift</option>
-                                                <option>Transact SQL</option>
-                                                <option>Visual Basic</option>
+                                                <option *ngFor="let codeLanguage of codeList" [value]="codeLanguage.value">
+                                                    {{codeLanguage.display}}
+                                                </option>
                                             </select>
                                         </div>
                                     </div>

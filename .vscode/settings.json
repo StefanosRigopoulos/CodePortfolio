@@ -2,7 +2,8 @@
     "cSpell.words": [
         "codeportfolio",
         "hmac",
-        "HMACSHA"
+        "HMACSHA",
+        "photourl"
     ],
     "angular.enable-strict-mode-prompt": false
 }

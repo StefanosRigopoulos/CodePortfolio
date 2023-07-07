@@ -20,7 +20,6 @@ export class MemberDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadMember();
-    //this.initializeContactForm();
   }
 
   loadMember(){
@@ -53,16 +52,4 @@ export class MemberDetailComponent implements OnInit {
     if (this.member.linkedInURL == null) return false;
     return true;
   }
-
-  // initializeContactForm(){
-  //   this.contactForm = this.fb.group({
-  //     fullname: ['', Validators.required],
-  //     email: ['', [Validators.required, Validators.email]],
-  //     subject: ['', Validators.required],
-  //     message: ['', Validators.required]
-  //   })
-  // }
-
-  // submit(){
-  // }
 }

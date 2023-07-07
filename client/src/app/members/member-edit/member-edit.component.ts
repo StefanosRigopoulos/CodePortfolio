@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { FileUploader } from 'ng2-file-upload';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
+import { Lists } from 'src/app/_lists/lists';
 import { Member } from 'src/app/_models/member';
 import { Photo } from 'src/app/_models/photo';
 import { User } from 'src/app/_models/user';
@@ -35,6 +36,9 @@ export class MemberEditComponent implements OnInit {
       next: user => this.user = user
     })
   }
+
+  get codeList() { return Lists.CodeLanguageList }
+  get countryList() { return Lists.CountryList }
 
   ngOnInit(): void {
     this.loadMember();
