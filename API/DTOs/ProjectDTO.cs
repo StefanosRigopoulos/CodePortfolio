@@ -11,5 +11,7 @@ namespace API.DTOs
         public String Language { get; set; }
         public String Description { get; set; }
         public List<ProjectPhotoDTO> ProjectPhotos { get; set; } = new ();
+        public List<LikeDTO> LikedByUsers { get; set; } = new ();
+        public int LikesCount { get; set; }
     }
 }

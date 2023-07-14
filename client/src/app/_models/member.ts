@@ -17,6 +17,7 @@ export interface Member {
     profilePhotoURL: string;
     photo: Photo;
     projects: Project[];
+    likedProjects: Project[];
     bio: string;
     facebookURL: string;
     twitterURL: string;

@@ -8,4 +8,5 @@ export interface Project {
     language: string;
     description: string;
     projectPhotos: ProjectPhoto[];
+    likesCount: number;
 }

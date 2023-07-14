@@ -15,9 +15,12 @@ namespace API.Entities
         public String Language { get; set; }
         public String Description { get; set; }
         public List<ProjectPhoto> ProjectPhotos { get; set; } = new ();
+        public List<Like> LikedByUsers { get; set; } = new ();
+        public int LikesCount { get; set; }
 
         // Relation properties
         public int AppUserId { get; set; }
         public AppUser AppUser { get; set; }
+
     }
 }

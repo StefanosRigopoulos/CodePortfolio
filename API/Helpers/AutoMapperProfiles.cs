@@ -22,6 +22,7 @@ namespace API.Helpers
                 .ForMember(dest => dest.ProjectName, opt => opt.MapFrom(src => src.ProjectTitle.ToLower().Replace(" ","_")))
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));    // Exclude the fields that come in as null.
             CreateMap<RegisterDTO, AppUser>();
+            CreateMap<Like, LikeDTO>();
         }
     }
 }

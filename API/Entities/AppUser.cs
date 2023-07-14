@@ -18,6 +18,7 @@ namespace API.Entities
         public string CodeLanguage { get; set; }
         public Photo Photo { get; set; }
         public List<Project> Projects { get; set; } = new ();
+        public List<Like> LikedProjects { get; set; } = new ();
         public string Bio { get; set; }
         public string FacebookURL { get; set; }
         public string TwitterURL { get; set; }

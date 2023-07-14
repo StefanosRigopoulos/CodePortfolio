@@ -1,13 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
-import { Observable } from 'rxjs';
-import { Member } from 'src/app/_models/member';
 import { Project } from 'src/app/_models/project';
-import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
-import { MembersService } from 'src/app/_services/members.service';
 import { ProjectsService } from 'src/app/_services/projects.service';
+import { LikeService } from 'src/app/_services/like.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   template: 'The href is: {{href}}',
@@ -25,7 +23,7 @@ export class ProjectDetailsComponent implements OnInit {
   username: string;
   projectname: string;
 
-  constructor(private projectService: ProjectsService, public accountService: AccountService, private router: Router) { }
+  constructor(private projectService: ProjectsService, public accountService: AccountService, public likeService: LikeService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.pieces = this.router.url.split('/');
@@ -67,6 +65,14 @@ export class ProjectDetailsComponent implements OnInit {
         this.model = project,
         this.project = project,
         this.galleryImages = this.getImages();
+      }
+    })
+  }
+
+  likeUpdate() {
+    this.likeService.likeUpdate(this.username, this.projectname).subscribe({
+      next: _ => {
+        this.loadProject();
       }
     })
   }

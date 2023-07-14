@@ -17,6 +17,7 @@ namespace API.DTOs
         public string ProfilePhotoURL { get; set; }
         public PhotoDTO Photo { get; set; }
         public List<ProjectDTO> Projects { get; set; } = new ();
+        public List<LikeDTO> LikedProjects { get; set; } = new ();
         public string Bio { get; set; }
         public string FacebookURL { get; set; }
         public string TwitterURL { get; set; }

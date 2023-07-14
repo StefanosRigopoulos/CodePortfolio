@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Member } from 'src/app/_models/member';
 import { Project } from 'src/app/_models/project';
@@ -14,16 +13,15 @@ import { MembersService } from 'src/app/_services/members.service';
 export class MemberDetailComponent implements OnInit {
   member: Member | undefined;
   projects: Project[] = [];
-  contactForm: FormGroup = new FormGroup({});
 
-  constructor(private memberService: MembersService, private route: ActivatedRoute, private fb: FormBuilder) { }
+  constructor(private memberService: MembersService, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loadMember();
   }
 
   loadMember(){
-    var username = this.route.snapshot.paramMap.get('username');
+    var username = this.router.snapshot.paramMap.get('username');
     if (!username) return;
     this.memberService.getMember(username).subscribe({
       next: member => {
