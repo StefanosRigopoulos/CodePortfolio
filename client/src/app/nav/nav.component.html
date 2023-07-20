@@ -4,14 +4,14 @@
         <ul class="navbar-nav me-auto">
             <ng-container *ngIf="accountService.currentUser$ | async">
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/explore" routerLinkActive="active">Explore</a>
+                    <a class="nav-link" routerLink="/explore" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">Explore</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/messages" routerLinkActive="active">Messages</a>
+                    <a class="nav-link" routerLink="/messages" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">Messages</a>
                 </li>
             </ng-container>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/errors" routerLinkActive="active">Errors</a>
+                <a class="nav-link" routerLink="/errors" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">Errors</a>
             </li>
         </ul>
         <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>

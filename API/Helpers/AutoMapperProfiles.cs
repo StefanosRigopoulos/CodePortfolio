@@ -23,6 +23,9 @@ namespace API.Helpers
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));    // Exclude the fields that come in as null.
             CreateMap<RegisterDTO, AppUser>();
             CreateMap<Like, LikeDTO>();
+            CreateMap<Message, MessageDTO>()
+                .ForMember(d => d.SenderMainPhotoURL, opt => opt.MapFrom(src => src.Sender.Photo.URL))
+                .ForMember(d => d.RecipientMainPhotoURL, opt => opt.MapFrom(src => src.Recipient.Photo.URL));
         }
     }
 }

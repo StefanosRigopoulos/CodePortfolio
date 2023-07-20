@@ -24,5 +24,7 @@ namespace API.Entities
         public string TwitterURL { get; set; }
         public string GitHubURL { get; set; }
         public string LinkedInURL { get; set; }
+        public List<Message> MessagesSent { get; set; }
+        public List<Message> MessagesReceived { get; set; }
     }
 }

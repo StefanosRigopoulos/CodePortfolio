@@ -18,6 +18,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { PreventUnsavedChangesMemberGuard } from './_guards/prevent-unsaved-changes-member.guard';
 import { PreventUnsavedChangesProjectGuard } from './_guards/prevent-unsaved-changes-project.guard';
 import { PreventUnsavedChangesCreateGuard } from './_guards/prevent-unsaved-changes-create.guard';
+import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -33,7 +34,7 @@ const routes: Routes = [
     children: [
       {path: 'explore', component: ExploreComponent},
       {path: 'messages', component: MessagesComponent},
-      {path: ':username', component: MemberDetailComponent},
+      {path: ':username', component: MemberDetailComponent, resolve: {member: MemberDetailResolver}},
       {path: ':username/create', component: ProjectCreationComponent, canDeactivate: [PreventUnsavedChangesCreateGuard]},
       {path: ':username/edit', component: MemberEditComponent, canDeactivate: [PreventUnsavedChangesMemberGuard]},
       {path: ':username/p/:projectname', component: ProjectDetailsComponent},

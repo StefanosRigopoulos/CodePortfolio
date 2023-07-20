@@ -3,7 +3,8 @@
         "codeportfolio",
         "hmac",
         "HMACSHA",
-        "photourl"
+        "photourl",
+        "titlecase"
     ],
     "angular.enable-strict-mode-prompt": false
 }
