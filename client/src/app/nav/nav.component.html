@@ -9,10 +9,13 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/messages" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">Messages</a>
                 </li>
+                <li *appHasRole="['Admin', 'Moderator']" class="nav-item">
+                    <a class="nav-link" routerLink="/admin" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">Admin</a>
+                </li>
+                <li *appHasRole="['Admin', 'Moderator']" class="nav-item">
+                    <a class="nav-link" routerLink="/errors" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">Errors</a>
+                </li>
             </ng-container>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/errors" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">Errors</a>
-            </li>
         </ul>
         <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
             <a class="dropdown text-light text-decoration-none" dropdownToggle>{{user.nickname | titlecase}}<img src="{{user.profilePhotoURL || './assets/user.png'}}" alt="profile photo"></a>

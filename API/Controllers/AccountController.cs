@@ -5,6 +5,7 @@ using API.DTOs;
 using API.Entities;
 using API.Interfaces;
 using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,13 +13,13 @@ namespace API.Controllers
 {
     public class AccountController : BaseAPIController
     {
-        private readonly DataContext _context;
+        private readonly UserManager<AppUser> _userManager;
         public readonly ITokenService _tokenService;
         public readonly IMapper _mapper;
 
-        public AccountController (DataContext context, ITokenService tokenService, IMapper mapper){
+        public AccountController (UserManager<AppUser> userManager, ITokenService tokenService, IMapper mapper){
             _tokenService = tokenService;
-            _context = context;
+            _userManager = userManager;
             _mapper = mapper;
         }
 
@@ -29,23 +30,22 @@ namespace API.Controllers
 
             var user = _mapper.Map<AppUser>(registerDTO);
 
-            using var hmac = new HMACSHA512();
-
             user.UserName = registerDTO.Username.ToLower();
             user.NickName = registerDTO.Username;
             user.Photo = new Photo();
             user.Photo.URL = registerDTO.PhotoURL;
-            user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDTO.Password));
-            user.PasswordSalt = hmac.Key;
 
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            var result = await _userManager.CreateAsync(user, registerDTO.Password);
+            if (!result.Succeeded) return BadRequest(result.Errors);
+
+            var roleResult = await _userManager.AddToRoleAsync(user, "Member");
+            if (!roleResult.Succeeded) return BadRequest(result.Errors);
 
             return new UserDTO
             {
                 Username = user.UserName,
                 Nickname = user.NickName,
-                Token = _tokenService.CreateToken(user),
+                Token = await _tokenService.CreateToken(user),
                 ProfilePhotoURL = user.Photo?.URL,
                 CodeLanguage = user.CodeLanguage
             };
@@ -55,32 +55,28 @@ namespace API.Controllers
         public async Task<ActionResult<UserDTO>> Login(LoginDTO loginDTO){
 
             // Checking the username
-            var user = await _context.Users.Include(p => p.Photo).SingleOrDefaultAsync(x => x.UserName == loginDTO.Username);
+            var user = await _userManager.Users.Include(p => p.Photo).SingleOrDefaultAsync(x => x.UserName == loginDTO.Username);
             if (user == null) return Unauthorized("Invalid username!");
 
             // Checking the password
-            using var hmac = new HMACSHA512(user.PasswordSalt);
-            var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDTO.Password));
-            for (int i = 0; i < computedHash.Length; i++){
-                if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid password!");
-            }
-
+            var result = await _userManager.CheckPasswordAsync(user, loginDTO.Password);
+            if (!result) return Unauthorized("Invalid Password");
             return new UserDTO
             {
                 Username = user.UserName,
                 Nickname = user.NickName,
-                Token = _tokenService.CreateToken(user),
+                Token = await _tokenService.CreateToken(user),
                 ProfilePhotoURL = user.Photo?.URL,
                 CodeLanguage = user.CodeLanguage
             };
         }
 
         private async Task<bool> UsernameExists(string username){
-            return await _context.Users.AnyAsync(x => x.UserName == username.ToLower());
+            return await _userManager.Users.AnyAsync(x => x.UserName == username.ToLower());
         }
 
         private async Task<bool> EmailExists(string email){
-            return await _context.Users.AnyAsync(x => x.Email == email.ToLower());
+            return await _userManager.Users.AnyAsync(x => x.Email == email.ToLower());
         }
     }
 }

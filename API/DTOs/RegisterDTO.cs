@@ -13,7 +13,7 @@ namespace API.DTOs
         [Required] public string Gender { get; set; }
         [Required] public string Country { get; set; }
         [Required] public string CodeLanguage { get; set; }
-        [Required] public string PhotoURL { get; set; }
+        public string PhotoURL { get; set; }
         public string FacebookURL { get; set; }
         public string TwitterURL { get; set; }
         public string GitHubURL { get; set; }
