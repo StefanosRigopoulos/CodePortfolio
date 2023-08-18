@@ -10,7 +10,7 @@ namespace API.Data
     public class ProjectRepository : IProjectRepository
     {
         private readonly DataContext _context;
-        public IMapper _mapper { get; }
+        private readonly IMapper _mapper;
         public ProjectRepository(DataContext context, IMapper mapper)
         {
             _mapper = mapper;
@@ -20,11 +20,6 @@ namespace API.Data
         public void Update(Project project)
         {
             _context.Entry(project).State = EntityState.Modified;
-        }
-
-        public async Task<bool> SaveAllASync()
-        {
-            return await _context.SaveChangesAsync() >= 0;
         }
 
         public async Task<Project> GetProjectEntityAsync(string username, string projectname)

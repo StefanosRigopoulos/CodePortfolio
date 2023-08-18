@@ -10,42 +10,42 @@ namespace API.Controllers
     [Authorize]
     public class ProjectsController : BaseAPIController
     {
-        private readonly IProjectRepository _projectRepository;
-        public IMapper _mapper { get; }
-        public IPhotoService _photoService { get; }
+        private readonly IMapper _mapper;
+        private readonly IPhotoService _photoService;
+        private readonly IUnitOfWork _uow;
 
-        public ProjectsController(IProjectRepository projectRepository, IMapper mapper, IPhotoService photoService)
+        public ProjectsController(IUnitOfWork uow, IMapper mapper, IPhotoService photoService)
         {
+            _uow = uow;
             _mapper = mapper;
             _photoService = photoService;
-            _projectRepository = projectRepository;
         }
 
         [HttpGet("{username}")]
         public async Task<ActionResult<IEnumerable<ProjectDTO>>> GetProjects(string username)
         {
-            var projects = await _projectRepository.GetProjectsAsync(username);
+            var projects = await _uow.ProjectRepository.GetProjectsAsync(username);
             return Ok(projects);
         }
 
         [HttpGet("{username}/{projectname}")]
         public async Task<ActionResult<ProjectDTO>> GetProject(string username, string projectname)
         {
-            return await _projectRepository.GetProjectAsync(username, projectname);
+            return await _uow.ProjectRepository.GetProjectAsync(username, projectname);
         }
 
         [HttpPut("{username}/{projectname}/edit")]
         public async Task<ActionResult> UpdateProject(string username, string projectname, ProjectUpdateDTO projectUpdateDTO)
         {
             // Getting the project.
-            var project = await _projectRepository.GetProjectEntityAsync(username, projectname);
+            var project = await _uow.ProjectRepository.GetProjectEntityAsync(username, projectname);
             if (project == null) return NotFound();
 
             // Mapping the received DTO to our project entity.
             _mapper.Map(projectUpdateDTO, project);
 
             // Saving changes.
-            if (await _projectRepository.SaveAllASync()) return NoContent();
+            if (await _uow.Complete()) return NoContent();
             return BadRequest("Failed to update project!");
         }
 
@@ -53,7 +53,7 @@ namespace API.Controllers
         public async Task<ActionResult<ProjectPhotoDTO>> AddProjectPhoto(string username, string projectname, IFormFile file)
         {
             // Getting the project.
-            var project = await _projectRepository.GetProjectEntityAsync(username, projectname);
+            var project = await _uow.ProjectRepository.GetProjectEntityAsync(username, projectname);
             if (project == null) return NotFound();
 
             // Upload new profile photo.
@@ -74,7 +74,7 @@ namespace API.Controllers
             project.ProjectPhotos.Add(photo);
 
             // Saving changes.
-            if (await _projectRepository.SaveAllASync())
+            if (await _uow.Complete())
             {
                 return _mapper.Map<ProjectPhotoDTO>(photo);
             }
@@ -85,14 +85,14 @@ namespace API.Controllers
         public async Task<ActionResult> DeleteProject(string username, string projectname)
         {
             // Getting the project.
-            var project = await _projectRepository.GetProjectEntityAsync(username, projectname);
+            var project = await _uow.ProjectRepository.GetProjectEntityAsync(username, projectname);
             if (project == null) return NotFound();
 
-            if (!_projectRepository.DeleteProjectAsync(project)) return BadRequest("Project can not be deleted from the repository!");
+            if (!_uow.ProjectRepository.DeleteProjectAsync(project)) return BadRequest("Project can not be deleted from the repository!");
             await _photoService.DeleteProjectFolder(username, projectname);
 
             // Saving changes.
-            if (await _projectRepository.SaveAllASync()) return Ok();
+            if (await _uow.Complete()) return Ok();
             return BadRequest("Problem deleting project!");
         }
 
@@ -100,7 +100,7 @@ namespace API.Controllers
         public async Task<ActionResult> SetMainProjectPhoto(string username, string projectname, int photoId)
         {
             // Getting the project.
-            var project = await _projectRepository.GetProjectEntityAsync(username, projectname);
+            var project = await _uow.ProjectRepository.GetProjectEntityAsync(username, projectname);
             if (project == null) return NotFound();
 
             // Getting the photo with the certain ID.
@@ -116,7 +116,7 @@ namespace API.Controllers
             photo.IsMain = true;
 
             // Pushing changes to the database.
-            if (await _projectRepository.SaveAllASync()) return NoContent();
+            if (await _uow.Complete()) return NoContent();
             return BadRequest("Problem setting the main photo!");
         }
 
@@ -124,7 +124,7 @@ namespace API.Controllers
         public async Task<ActionResult> DeleteProjectPhoto(string username, string projectname, int photoId)
         {
             // Getting the project.
-            var project = await _projectRepository.GetProjectEntityAsync(username, projectname);
+            var project = await _uow.ProjectRepository.GetProjectEntityAsync(username, projectname);
             if (project == null) return NotFound();
 
             // Getting the photo with the certain ID.
@@ -145,7 +145,7 @@ namespace API.Controllers
             project.ProjectPhotos.Remove(photo);
 
             // Saving changes.
-            if (await _projectRepository.SaveAllASync()) return Ok();
+            if (await _uow.Complete()) return Ok();
             return BadRequest("Problem deleting photo!");
         }
     }

@@ -11,7 +11,7 @@ namespace API.Data
     public class UserRepository : IUserRepository
     {
         private readonly DataContext _context;
-        public IMapper _mapper { get; }
+        private readonly IMapper _mapper;
         public UserRepository(DataContext context, IMapper mapper)
         {
             _mapper = mapper;
@@ -21,11 +21,6 @@ namespace API.Data
         public void Update(AppUser user)
         {
             _context.Entry(user).State = EntityState.Modified;
-        }
-
-        public async Task<bool> SaveAllASync()
-        {
-            return await _context.SaveChangesAsync() >= 0;
         }
 
         public async Task<IEnumerable<AppUser>> GetUsersAsync()
@@ -46,7 +41,7 @@ namespace API.Data
         public async Task<PagedList<MemberDTO>> GetMembersAsync(UserParams userParams)
         {
             var query = _context.Users.AsQueryable();
-            query = query.Where(u => u.UserName != userParams.CurrentUsername);
+            query = query.Where(u => u.UserName != userParams.CurrentUsername && u.UserName != "admin");
             if (!string.IsNullOrEmpty(userParams.CodeLanguage)) {
                 query = query.Where(u => u.CodeLanguage == userParams.CodeLanguage);
             }

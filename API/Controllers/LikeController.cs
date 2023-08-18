@@ -8,39 +8,37 @@ namespace API.Controllers
 {
     public class LikeController : BaseAPIController
     {
-        private readonly IProjectRepository _projectRepository;
-        private readonly ILikeRepository _likeRepository;
-        public LikeController(IProjectRepository projectRepository, ILikeRepository likeRepository)
+        private readonly IUnitOfWork _uow;
+        public LikeController(IUnitOfWork uow)
         {
-            _projectRepository = projectRepository;
-            _likeRepository = likeRepository;
+            _uow = uow;
         }
 
-        [HttpGet]       // TODO Does not get the main photo url with the DTO.
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<ProjectDTO>>> GetProjectLiked() {
-            var projects = await _likeRepository.GetProjectsLiked(int.Parse(User.GetUserId()));
+            var projects = await _uow.LikeRepository.GetProjectsLiked(int.Parse(User.GetUserId()));
             return Ok(projects);
         }
 
         [HttpPost("{username}/{projectname}")]
         public async Task<ActionResult> AddLike(string username, string projectname) {
             var userLikedId = int.Parse(User.GetUserId());
-            var projectLiked = await _projectRepository.GetProjectEntityAsync(username, projectname);
-            var userLiked = await _likeRepository.GetUser(userLikedId);
+            var projectLiked = await _uow.ProjectRepository.GetProjectEntityAsync(username, projectname);
+            var userLiked = await _uow.LikeRepository.GetUser(userLikedId);
 
             if (projectLiked == null) return NotFound();
 
             if (userLiked.Projects.Contains(projectLiked)) return BadRequest("You can not like your own projects!");
 
-            var like = await _likeRepository.GetLike(projectLiked.Id, userLikedId);
+            var like = await _uow.LikeRepository.GetLike(projectLiked.Id, userLikedId);
 
             if (like != null) {     // Unlike
                 projectLiked.LikedByUsers.Remove(like);
                 userLiked.LikedProjects.Remove(like);
-                _likeRepository.RemoveLike(like);
+                _uow.LikeRepository.RemoveLike(like);
                 projectLiked.LikesCount--;
 
-                if (await _projectRepository.SaveAllASync()) return Ok();
+                if (await _uow.Complete()) return Ok();
                 return BadRequest("Failed to unlike project!");
             }
             else {                  // Like
@@ -52,7 +50,7 @@ namespace API.Controllers
                 userLiked.LikedProjects.Add(like);
                 projectLiked.LikesCount++;
 
-                if (await _projectRepository.SaveAllASync()) return Ok();
+                if (await _uow.Complete()) return Ok();
                 return BadRequest("Failed to like project!");
             }
         }

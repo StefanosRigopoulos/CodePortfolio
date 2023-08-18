@@ -6,6 +6,8 @@ import { AccountService } from 'src/app/_services/account.service';
 import { ProjectsService } from 'src/app/_services/projects.service';
 import { LikeService } from 'src/app/_services/like.service';
 import { ToastrService } from 'ngx-toastr';
+import { take } from 'rxjs';
+import { User } from 'src/app/_models/user';
 
 @Component({
   template: 'The href is: {{href}}',
@@ -18,12 +20,19 @@ export class ProjectDetailsComponent implements OnInit {
   galleryImages: NgxGalleryImage[] = [];
   model: any = {};
   project: Project;
+  user?: User;
 
   pieces: string[] = [];
   username: string;
   projectname: string;
 
-  constructor(private projectService: ProjectsService, public accountService: AccountService, public likeService: LikeService, private router: Router, private toastr: ToastrService) { }
+  constructor(private projectService: ProjectsService, public accountService: AccountService, public likeService: LikeService, private router: Router) {
+    this.accountService.currentUser$.pipe(take(1)).subscribe({
+      next: user => {
+        if (user) this.user = user;
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.pieces = this.router.url.split('/');

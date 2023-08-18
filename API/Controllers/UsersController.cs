@@ -12,23 +12,22 @@ namespace API.Controllers
     [Authorize]
     public class UsersController : BaseAPIController
     {
-        private readonly IUserRepository _userRepository;
-        public IMapper _mapper { get; }
-        public IPhotoService _photoService { get; }
-        public UsersController(IUserRepository userRepository, IMapper mapper, IPhotoService photoService)
+        private readonly IMapper _mapper;
+        private readonly IPhotoService _photoService;
+        private readonly IUnitOfWork _uow;
+        public UsersController(IUnitOfWork uow, IMapper mapper, IPhotoService photoService)
         {
+            _uow = uow;
             _photoService = photoService;
             _mapper = mapper;
-            _userRepository = userRepository;
         }
 
         [HttpGet]
         public async Task<ActionResult<PagedList<MemberDTO>>> GetUsers([FromQuery]UserParams userParams)
         {
-            var currentUser = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
-            userParams.CurrentUsername = currentUser.UserName;
+            userParams.CurrentUsername = User.GetUsername();
             if (string.IsNullOrEmpty(userParams.CodeLanguage)) { }
-            var users = await _userRepository.GetMembersAsync(userParams);
+            var users = await _uow.UserRepository.GetMembersAsync(userParams);
             Response.AddPaginationHeader(new PaginationHeader(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages));
             return Ok(users);
         }
@@ -36,21 +35,21 @@ namespace API.Controllers
         [HttpGet("{username}/")]
         public async Task<ActionResult<MemberDTO>> GetUser(string username)
         {
-            return await _userRepository.GetMemberAsync(username);
+            return await _uow.UserRepository.GetMemberAsync(username);
         }
 
         [HttpPut]
         public async Task<ActionResult> UpdateUser(MemberUpdateDTO memberUpdateDTO)
         {
             // Getting the user from our repository.
-            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+            var user = await _uow.UserRepository.GetUserByUsernameAsync(User.GetUsername());
             if (user == null) return NotFound();
 
             // Mapping the received DTO to our user entity.
             _mapper.Map(memberUpdateDTO, user);
 
             // Saving changes.
-            if (await _userRepository.SaveAllASync()) return NoContent();
+            if (await _uow.Complete()) return NoContent();
             return BadRequest("Failed to update user!");
         }
 
@@ -58,7 +57,7 @@ namespace API.Controllers
         public async Task<ActionResult<PhotoDTO>> AddProfilePhoto(IFormFile file)
         {
             // Getting the user from our repository.
-            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+            var user = await _uow.UserRepository.GetUserByUsernameAsync(User.GetUsername());
             if (user == null) return NotFound();
 
             // Delete previous profile photo from our database.
@@ -84,7 +83,7 @@ namespace API.Controllers
             user.Photo = photo;
 
             // Saving changes.
-            if (await _userRepository.SaveAllASync())
+            if (await _uow.Complete())
             {
                 return CreatedAtAction(nameof(GetUser), new {username = user.UserName}, _mapper.Map<PhotoDTO>(photo));
             }
@@ -95,7 +94,7 @@ namespace API.Controllers
         public async Task<ActionResult<ProjectDTO>> CreateProject(ProjectDTO projectDTO)
         {
             // Getting the user from our repository.
-            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+            var user = await _uow.UserRepository.GetUserByUsernameAsync(User.GetUsername());
             if (user == null) return NotFound();
 
             // Creating a new project entity.
@@ -112,7 +111,7 @@ namespace API.Controllers
             user.Projects.Add(project);
 
             // Saving changes.
-            if (await _userRepository.SaveAllASync()) return NoContent();
+            if (await _uow.Complete()) return NoContent();
             return BadRequest("Failed to create a new project!");
         }
     }

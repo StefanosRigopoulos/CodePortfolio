@@ -29,7 +29,9 @@
                 </ul>
             </div>
             <div class="card-body">
-                <h5 class="card-title text-center" style="margin-top: -20px;">{{member.nickName}}</h5>
+                <h5 class="card-title text-center" style="margin-top: -20px;">
+                    <i *ngIf="(presenceService.onlineUsers$ | async)?.includes(member.userName)" class="class fa fa-user-circle text-success"></i> {{member.nickName}}
+                </h5>
                 <hr>
                 <div class="row">
                     <div class="col-6">
@@ -44,7 +46,7 @@
                         <strong>Last Active:</strong>
                     </div>
                     <div class="col">
-                        <p>{{member.lastActive + 'Z' | timeago}}</p>
+                        <p>{{member.lastActive | timeago}}</p>
                     </div>
                 </div>
                 <div class="row">
@@ -65,7 +67,7 @@
                     <div class="col-3" *ngFor="let project of projects">
                         <app-project-card [project]="project" [member]="member"></app-project-card>
                     </div>
-                    <div class="col-3 text-center pt-4">
+                    <div class="col-3 text-center pt-4" *ngIf="member.userName === user.username">
                         <button class="btn btn-success btn-xlg p-3" routerLink="/{{member.userName}}/create"><i class="fa fa-plus" style="font-size: 50px;"></i></button>
                     </div>
                 </div>
@@ -113,7 +115,7 @@
                 </div>
             </tab>
             <tab heading="Messages" (selectTab)="onTabActivated($event)">
-                <app-member-messages [messages]="messages" [username]="member.userName"></app-member-messages>
+                <app-member-messages [username]="member.userName"></app-member-messages>
             </tab>
         </tabset>
     </div>

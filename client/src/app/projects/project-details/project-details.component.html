@@ -19,7 +19,7 @@
                     <li class="list-inline-item">
                         <button class="btn btn-info" routerLink="/{{username}}" [queryParams]="{tab: 'Messages'}"><i class="fa fa-envelope"></i></button>
                     </li>
-                    <li class="list-inline-item">
+                    <li class="list-inline-item" *ngIf="username === user.username">
                         <button class="btn btn-danger" routerLink="/{{username}}/p/{{projectname}}/edit"><i class="fa fa-wrench"></i></button>
                     </li>
                 </ul>
