@@ -12,8 +12,10 @@ namespace API
     public class Startup
     {
         private readonly IConfiguration _config;
-        public Startup(IConfiguration config)
+        private readonly IWebHostEnvironment _env;
+        public Startup(IWebHostEnvironment env, IConfiguration config)
         {
+            _env = env;
             _config = config;
         }
 
@@ -23,6 +25,33 @@ namespace API
             services.AddControllers();
             services.AddApplicationServices(_config);
             services.AddIdentityServices(_config);
+
+            var connString = "";
+            if (_env.IsDevelopment()) {
+                connString = _config.GetConnectionString("DefaultConnection");
+            } else {
+                // Use connection string provided at runtime by Heroku.
+                var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+
+                // Parse connection URL to connection string for Npgsql
+                connUrl = connUrl.Replace("postgres://", string.Empty);
+                var pgUserPass = connUrl.Split("@")[0];
+                var pgHostPortDb = connUrl.Split("@")[1];
+                var pgHostPort = pgHostPortDb.Split("/")[0];
+                var pgDb = pgHostPortDb.Split("/")[1];
+                var pgUser = pgUserPass.Split(":")[0];
+                var pgPass = pgUserPass.Split(":")[1];
+                var pgHost = pgHostPort.Split(":")[0];
+                var pgPort = pgHostPort.Split(":")[1];
+                var updatedHost = pgHost.Replace("flycast", "internal");
+
+                connString = $"Server={updatedHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
+            }
+            services.AddDbContext<DataContext>(opt =>
+            {
+                opt.UseNpgsql(connString);
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPIv5", Version = "v1" });
@@ -50,11 +79,15 @@ namespace API
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapHub<PresenceHub>("hubs/presence");
                 endpoints.MapHub<MessageHub>("hubs/message");
+                endpoints.MapFallbackToController("Index", "Fallback");
             });
 
             // Temp seed data
@@ -65,7 +98,7 @@ namespace API
                 var userManager = services.GetRequiredService<UserManager<AppUser>>();
                 var roleManager = services.GetRequiredService<RoleManager<AppRole>>();
                 await context.Database.MigrateAsync();
-                await context.Database.ExecuteSqlRawAsync("DELETE FROM [Connections]");
+                await Seed.ClearConnections(context);
                 await Seed.SeedUsers(userManager, roleManager);
             } catch (Exception e) {
                 var logger = services.GetService<ILogger<AppUser>>();

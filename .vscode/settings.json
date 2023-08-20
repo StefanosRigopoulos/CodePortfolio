@@ -3,6 +3,7 @@
         "codeportfolio",
         "hmac",
         "HMACSHA",
+        "Npgsql",
         "photourl",
         "signalr",
         "titlecase"
