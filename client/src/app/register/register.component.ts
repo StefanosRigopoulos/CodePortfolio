@@ -28,8 +28,8 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12), this.matchValuesValidator('password')]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12), this.strongValidator()]],
+      confirmPassword: ['', [Validators.required, this.matchValuesValidator('password')]],
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
       dateofbirth: ['', Validators.required],
@@ -51,6 +51,16 @@ export class RegisterComponent implements OnInit {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const password = control.parent?.get(matchTo)?.value;
       return password !== control.value ? { notMatching: true } : null;
+    };
+  }
+
+  strongValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      let hasNumber = /\d/.test(control.value);
+      let hasUpper = /[A-Z]/.test(control.value);
+      let hasLower = /[a-z]/.test(control.value);
+      const valid = hasNumber && hasUpper && hasLower;
+      return !valid ? { alphanumeric: true } : null;
     };
   }
 
